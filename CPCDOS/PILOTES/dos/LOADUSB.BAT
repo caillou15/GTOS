@@ -1,4 +1,0 @@
-@ECHO OFF
-REM USB 2.0 mass-storage driver for DOS (support FAT16/32/EXFAT)
-DEVLOAD /H USBASPI.SYS
-USBEXFAT.COM

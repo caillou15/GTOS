@@ -1,7 +1,0 @@
-#EV.DISPONIBLE(CLIC)
-rem/ Fichier evenement du bouton precedent
-
-PROC/ EXP_PREC(CLIC)
-	rem/ Il s'agit d'une variable communiquante qui indique un retour dossier sur l'objet EXPLOREUR
-	fix/ EXP_RETOUR = 1
-FIN/ PROC

@@ -1,9 +1,0 @@
-rem/ Ce programme permet de tester l'executeur CCP a double thread grace a '&'
-txt/ Mon premier texte
-txt/ mon petit 2eme
-exe/ & OS\PROG\DOUBL2.CPC
-txt/ Mon second texte
-exe/ & OS\PROG\DOUBL2.CPC /l:LABEL
-
-:LAB:
-txt/ FIN !

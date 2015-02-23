@@ -1,8 +1,0 @@
-rem/ GTOS Launcher
-
-:AUTOEXEC:
-exe/ OS\OS.cpc
-
-
-:IUG:
-exe/ OS\OS.CPC /l:IUG

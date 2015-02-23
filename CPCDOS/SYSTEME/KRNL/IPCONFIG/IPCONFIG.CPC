@@ -1,6 +1,0 @@
-REM/ Fichier cree automatiquement lors de l'installation reseau, vous ne pouvez le modifier 
-FIX/ ADRESSE_IP = 172 22 15 20 
-FIX/ MASQUE_SR = 255 255 0 0 
-FIX/ PASSERELLE = 192 168 1 1  
-FIX/ DNS = 192 168 1 1 
-FIX/ MAC = 78-84-3C-FE-7B-4C 

@@ -1,4 +1,0 @@
-
-PROC/ FEXPLORE(AGRANDIRE)
-	msgbox/ /texte=yeah! /titre=123 /mode=1 /alerte=0	
-FIN/ PROC

@@ -1,8 +1,0 @@
-fix/ tab(1) = abc
-fix/ tab(2) = def
-fix/ tab(3) = 123
-fix/ tab(4) = 456
-fix/ tab(5) = 789
-
-@#TESTER fix/ /taille tab()
-Txt/ Il y a %TESTER% tableau TAB() crees

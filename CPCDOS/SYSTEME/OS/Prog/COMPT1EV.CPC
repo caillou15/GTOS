@@ -1,7 +1,0 @@
-PROC/ BOUTONC1(CLIC)
-	msgbox/ /texte=Tu as clique sur le bouton 'CLIQUE ICI'! /titre=Information /mode=1 /alerte=0
-FIN/ PROC
-
-PROC/ BOUTONC2(CLIC)
-	msgbox/ /texte=Tu as clique sur le bouton 'OU ICI'! /titre=Information /mode=1 /alerte=0
-FIN/ PROC

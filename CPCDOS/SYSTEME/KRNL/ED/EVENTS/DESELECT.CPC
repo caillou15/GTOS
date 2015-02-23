@@ -1,9 +1,0 @@
-SI/ %IDSelect% N -1 (:
-	ini/ label(
-		ini;nom = "LBL%IDSelect%"
-		ini;couleurf = "%NOSELECT_COLOR_R%,%NOSELECT_COLOR_V%,%NOSELECT_COLOR_B%"
-		creer/
-	ini/ label)
-Fin/ SI
-
-stop/
