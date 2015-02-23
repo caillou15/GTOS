@@ -1,0 +1,184 @@
+rem/ Ce programme permet de re-formaliser l'adresse IP, masque, passerelle et DNS
+rem/ en remplaçant les espaces par des points entre les octets et initialiser le tout dans WATTCP.CFG
+rem/ exemple 192 168 1 23 deviendra 192.168.1.23
+rem/ 08/03/2014 - maj 28/12/2014
+rem/ FAVIER Sebastien 01
+
+
+FIX/ TMP = /C INS>%ADRESSE_IP%;.
+SI/ %TMP% > 0 (:ALLER/ ERRDEJA:)
+
+
+
+fix/ debug = 0
+
+FIX/ ETAPE = 0
+:TOUT_DEBUT:
+
+FIX/ ESPACE = #NULL
+FIX/ POSITION = 0
+FIX/ OCTET_1 = #NULL
+FIX/ OCTET_2 = #NULL
+FIX/ OCTET_3 = #NULL
+FIX/ OCTET_4 = #NULL
+
+:IP:
+SI/ %ETAPE% > 0 (:ALLER/ MASK:)
+FIX/ ETAPE = 1
+TXT/ 1/4: Conversion de l'adresse IP...
+FIX/ ADRESSE = %ADRESSE_IP%
+ALLER/ DEBUT_1
+
+:MASK:
+SI/ %ETAPE% > 1 (:ALLER/ PASSERELLE:)
+FIX/ ETAPE = 2
+TXT/ 2/4: Conversion de l'adresse masque sous reseau...
+FIX/ ADRESSE = %MASQUE_SR%
+ALLER/ DEBUT_1
+
+:PASSERELLE:
+SI/ %ETAPE% > 2 (:ALLER/ DNS:)
+FIX/ ETAPE = 3
+TXT/ 3/4: Conversion de l'adresse IP passerelle...
+FIX/ ADRESSE = %PASSERELLE%
+ALLER/ DEBUT_1
+
+:DNS:
+SI/ %ETAPE% > 3 (:ALLER/ FINFIN:)
+FIX/ ETAPE = 4
+TXT/ 4/4: Conversion de l'adresse DNS...
+FIX/ ADRESSE = %DNS%
+
+:DEBUT_1:
+
+FIX/ POSITION = /C %POSITION% + 1
+
+REM/ Capturer de 1 a POSITION
+FIX/ OCTET_1 = /C CAP>%ADRESSE%;1-%POSITION%
+
+REM/ Retourne 1 ou plus si un espace est present
+FIX/ ESPACE = /C INS>%OCTET_1%; 
+SI/ %ESPACE% > 0 (:@ALLER/ ESPACE_1:)
+ALLER/ DEBUT_1
+
+:ESPACE_1:
+FIX/ POSITION = /C %POSITION% - 1
+FIX/ OCTET_1 = /C CAP>%ADRESSE%;1-%POSITION%
+
+FIX/ DEB_POS = /C %POSITION% + 2
+FIX/ POSITION = /C %POSITION% + 2
+
+rem/ ======================
+:DEBUT_2:
+
+
+FIX/ POSITION = /C %POSITION% + 1
+
+FIX/ POSITION_2 = /C %POSITION% - %DEB_POS%
+
+FIX/ OCTET_2 = /C CAP>%ADRESSE%;%DEB_POS%-%POSITION_2%
+
+REM/ Retourne 1 ou plus si un espace est present
+FIX/ ESPACE = /C INS>%OCTET_2%; 
+SI/ %ESPACE% > 0 (:ALLER/ ESPACE_2:)
+ALLER/ DEBUT_2
+
+:ESPACE_2:
+FIX/ POSITION = /C %POSITION% - 1
+FIX/ POSITION_2 = /C %POSITION% - %DEB_POS%
+FIX/ OCTET_2 = /C CAP>%ADRESSE%;%DEB_POS%-%POSITION_2%
+
+
+FIX/ DEB_POS = /C %POSITION% + 1
+FIX/ POSITION = /C %POSITION% + 2
+
+rem/ ======================
+:DEBUT_3:
+
+
+FIX/ POSITION = /C %POSITION% + 1
+
+FIX/ POSITION_2 = /C %POSITION% - %DEB_POS%
+
+
+FIX/ OCTET_3 = /C CAP>%ADRESSE%;%DEB_POS%-%POSITION_2%
+
+REM/ Retourne 1 ou plus si un espace est present
+FIX/ ESPACE = /C INS>%OCTET_3%; 
+SI/ %ESPACE% > 0 (:ALLER/ ESPACE_3:)
+ALLER/ DEBUT_3
+
+:ESPACE_3:
+FIX/ POSITION = /C %POSITION% - 1
+FIX/ POSITION_2 = /C %POSITION% - %DEB_POS%
+FIX/ OCTET_3 = /C CAP>%ADRESSE%;%DEB_POS%-%POSITION_2%
+
+
+
+FIX/ DEB_POS = /C %POSITION% + 1
+FIX/ POSITION = /C %POSITION% + 2
+FIX/ PASSAGE = #NUL
+rem/ ======================
+:DEBUT_4:
+
+FIX/ POSITION = /C %POSITION% + 1
+FIX/ PASSAGE = /C %PASSAGE% + 1
+FIX/ POSITION_2 = /C %POSITION% - %DEB_POS%
+
+
+FIX/ OCTET_4 = /C CAP>%ADRESSE%;%DEB_POS%-%POSITION_2%
+
+SI/ %PASSAGE% > 2 (:ALLER/ FIN1:)
+
+REM/ Retourne 1 ou plus si un espace est present
+FIX/ ESPACE = /C INS>%OCTET_4%; 
+SI/ %ESPACE% > 0 (:ALLER/ ESPACE_4:)
+ALLER/ DEBUT_4
+
+:ESPACE_4:
+FIX/ POSITION = /C %POSITION% - 1
+FIX/ POSITION_2 = /C %POSITION% - %DEB_POS%
+FIX/ OCTET_4 = /C CAP>%ADRESSE%;%DEB_POS%-%POSITION_2%
+
+:FIN1:
+
+Rem/ Assemblage a l'etape correspondante
+SI/ %ETAPE% = 1 (:FIX/ ADRESSE_IP = %OCTET_1%.%OCTET_2%.%OCTET_3%.%OCTET_4%:)
+SI/ %ETAPE% = 2 (:FIX/ MASQUE_SR = %OCTET_1%.%OCTET_2%.%OCTET_3%.%OCTET_4%:)
+SI/ %ETAPE% = 3 (:FIX/ PASSERELLE = %OCTET_1%.%OCTET_2%.%OCTET_3%.%OCTET_4%:)
+SI/ %ETAPE% = 4 (:FIX/ DNS = %OCTET_1%.%OCTET_2%.%OCTET_3%.%OCTET_4%:)
+
+SI/ %ETAPE% = 4 (:ALLER/ FINFIN:)
+
+ALLER/ TOUT_DEBUT
+
+:FINFIN:
+
+rem/ Suppression des variables
+@FIX/ /S ESPACE
+@FIX/ /S POSITION
+@FIX/ /S POSITION_2
+@FIX/ /S OCTET_1
+@FIX/ /S OCTET_2
+@FIX/ /S OCTET_3
+@FIX/ /S OCTET_4
+
+txt/ Ecriture dans WATTCP.CFG...
+fichier/ /sortir #15;..\PILOTES\RESEAU\WATTCP.CFG
+fichier/ /ecrire #15;my_ip = %ADRESSE_IP%
+fichier/ /ecrire #15;netmask = %MASQUE_SR%
+fichier/ /ecrire #15;gateway = %PASSERELLE%
+fichier/ /ecrire #15;hostname = %NOM_PC%
+fichier/ /fermer #15
+txt/ Ok!
+txt/
+Txt/ Operation terminee
+txt/ Adresse IP :%ADRESSE_IP%
+txt/ Masque SR  :%MASQUE_SR%
+txt/ Passerelle :%PASSERELLE%
+txt/ DNS        :%DNS%
+txt/
+
+stop/
+:ERRDEJA:
+Txt/ Adresse IP deja convertit

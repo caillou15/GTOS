@@ -1,0 +1,33 @@
+rem/ programme test le 20 janvier 2013
+rem/ Cree par Steve prudhomme
+rem/ cpcdosC+ cpcdos 2.0.1
+
+fix/ debug = 0
+
+
+rem/ == Variables ==
+fix/ AGE1 = 18
+fix/ AGE2 = 17
+fix/ nom = Steve
+fix/ nom2 = Sebastien
+
+rem/ == Reinitialiser les variables ==
+fix/ GRAND = 0
+fix/ PETIT = 0
+
+rem/ == Chercher qui est plus grand ou petit ==
+si/ %AGE1% > %AGE2% (:fix/ GRAND = 1:)
+si/ %AGE1% < %AGE2% (:fix/ PETIT = 1:)
+
+rem/ == Affichage texte ==
+si/ %GRAND% = 1 (:txt/ %nom% est plus grand que %nom2%:)
+
+si/ %PETIT% = 1 (:txt/ %nom% est plus petit que %nom2%:)
+
+rem/ == Effacer les variables / liberer la memoire ==
+@fix/ /s age1
+@fix/ /s age2
+@fix/ /s nom
+@fix/ /s nom2
+
+fix/ debug = 1

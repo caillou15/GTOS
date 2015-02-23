@@ -1,0 +1,45 @@
+PROC/ COMPT_%FTIMER_TABLEAU[X]%(CYCLE)
+	Fix/ TMP = %[X]%
+	Fix/ TMP2 = %TEMPS(TMP)%
+	SI/ %ATEMPS(TMP)% = %TMP2% (:
+		FIX/ TMP3 = /C %CYCLE(TMP)% + 1
+		FIX/ CYCLE(%TMP%) = %TMP3%
+		ini/ label(
+			ini;nom		= "LBL_TEMPS_%FTIMER_TABLEAU[X]%"
+			ini;texte	= "Nombre :%CYCLE(TMP)%"
+			creer/
+		ini/ label)
+
+		STOP/
+	SINON/
+		ini/ fenetre(
+			ini;nom = "%FTIMER_TABLEAU[X]%"
+			ini;texte = "Teste de comptage en %TEMPS(TMP)%ms"
+			creer/
+		ini/ fenetre)
+		actualise/ %FTIMER_TABLEAU[X]%
+		ini/ compteur(
+			ini;nom = "COMPT_%FTIMER_TABLEAU[X]%"
+			ini;intervalle = "%TEMPS(TMP)%"
+			creer/
+		ini/ compteur)
+		FIX/ ATEMPS(%TMP%) = %TMP2%
+	FIN/ SI
+stop/
+FIN/ PROC
+
+PROC/ LBL_PLUS_%FTIMER_TABLEAU[X]%(CLIC)
+	Fix/ TMP = %[X]%
+	Fix/ TMP2 = /C %TEMPS(TMP)% + 0.1
+	FIX/ TEMPS(%TMP%) = %TMP2%
+FIN/ PROC
+
+PROC/ LBL_MOINS_%FTIMER_TABLEAU[X]%(CLIC)
+	Fix/ TMP = %[X]%
+	Fix/ TMP2 = /C %TEMPS(TMP)% - 0.1
+	FIX/ TEMPS(%TMP%) = %TMP2%
+	SI/ %TEMPS(TMP)% < 0.1 (:
+		FIX/ TEMPS(%TMP%) = 0.1
+		STOP/
+	FIN/ SI
+FIN/ PROC

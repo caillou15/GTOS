@@ -1,0 +1,20 @@
+REM/ Pour lire dans un fichier binaire
+FIX/ RESULTAT = #NUL
+FICHIER/ /ENTRE #1;test.txt
+FIX/ BB = 0
+fix/ debug = 0
+:LIRE:
+Fix/ BB = /c %BB% + 1
+FIX/ FIN = /C EOF >1
+SI/ %FIN% = -1 (:Aller/ FIN:)
+REM/ EOF: End-Of-File 0:Non atteint -1:Fin atteint
+FICHIER/ /LIREB #1.%BB%;MA_VARIABLE
+FIX/ MA_VARIABLE = /C HEX2 >%MA_VARIABLE%
+FIX/ RESULTAT = %RESULTAT% %MA_VARIABLE%
+REM/ Enf-Of-File
+aller/ LIRE
+:FIN:
+FICHIER/ /FERMER #1
+txt/ %RESULTAT%
+
+

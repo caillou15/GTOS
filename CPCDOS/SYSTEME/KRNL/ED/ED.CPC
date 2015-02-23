@@ -1,0 +1,151 @@
+﻿rem/ Explorateur de Dossier
+rem/ argument:
+rem/ AG_F = nom de la fenêtre
+rem/ AG_D = dossier à afficher
+
+rem/ récupère la taille de la fenêtre
+fix/ FEN_TX = 0
+fix/ FEN_TY = 0
+ini/ fenetre(
+	ini;nom = %AG_F%
+	ini;TX = "#%FEN_TX"
+ini/ fenetre)
+ini/ fenetre(
+	ini;nom = %AG_F%
+	ini;TY = "#%FEN_TY"
+ini/ fenetre)
+
+rem/ récupère la liste des fichiers
+rep/ %AG_D% /RED TABFILES
+
+rem/ récupère le nombre de fichier
+@#MAXINC Fix/ /TAILLE TABFILES()
+
+rem/ Rustine sur MAXINC parce que /TAILLE retourne = ##Nombre
+fix/ Rustine = /C INS>%MAXINC%;##
+Si/ %Rustine% > 0 (: fix/ MAXINC = /C CAP>%MAXINC%;3 :)
+
+rem/ variable d incrementation
+fix/ INCF = 1
+
+rem/ variable de position des icônes et label x=0,y=0
+fix/ IcoPosX = 0
+fix/ IcoPosY = 0
+fix/ lblPosX = 0
+fix/ lblPosY = 0
+
+rem/ calcul de la zone de rendu des icônes
+fix/ ZONE_X = %MARG_G%
+fix/ ZONE_Y = %MARG_H%
+fix/ ZONE_TX = /C %FEN_TX% - %MARG_D%
+fix/ ZONE_TX = /C %ZONE_TX% - %MARG_G%
+fix/ ZONE_TX = /C %ZONE_TX% - %IT_X%
+
+fix/ ZONE_TY = /C %FEN_TY% - %MARG_B%
+fix/ ZONE_TY = /C %ZONE_TY% - %MARG_H%
+fix/ ZONE_TY = /C %ZONE_TY% - %IT_Y%
+
+rem/ variable de calcul de position des icônes
+fix/ INC_ICX = 0
+fix/ INC_ICY = 0
+
+rem/ images des icônes
+fix/ IMGEXT = #NUL
+fix/ TABEVNT(1 a %MAXINC%)
+rem/ boucle de parcourt des fichiers
+:BFI:
+SI/ %INCF% > %MAXINC% (:Aller/ FEND:)
+	
+	rem/ fonction FILEINFOS: récupère le type et le nom
+	fix/ ARGA = %TABFILES(INCF)%
+	exe/ & %STRING%\FILEINFO.CPC
+	fix/ FTYPE = %RESULTA%
+	fix/ FNAME = %RESULTB%
+	
+	rem/ remplace le contenu du tableau par le chemin complet du fichier
+	fix/ TABFILES(%INCF%) = %AG_D%\%FNAME%
+	SI/ %FTYPE% = F (:
+		rem/ c'est un fichier
+		rem/ fonction FILEEXT: récupère l'extension du fichier
+		fix/ ARGA = %FNAME%
+		exe/ & %STRING%\FILEEXT.CPC
+		fix/ FEXT = %RESULTA%
+		
+		rem/ fonction GETICO.CPC récupère l image d'icône pour une extension donnée
+		fix/ ARGA = %FEXT%
+		exe/ & %STRING%\GETICO.CPC
+		fix/ IMGEXT = %RESULTA%
+	Sinon/
+		rem/ c est un dossier (TODO: modifier GETICO.CPC: si il n'y a pas de point alors c'est un dossier)
+		fix/ IMGEXT = %ICONES%\DOSSIER.bmp
+	fin/ SI
+	
+	rem/ calcul la position des icônes à partir des valeurs d incrementation calculer plus bas
+	fix/ IcoPosX = /C %ZONE_X% + %INC_ICX%
+	fix/ IcoPosY = /C %ZONE_Y% + %INC_ICY%
+	fix/ lblPosY = /C %IcoPosY% + %IT_Y%
+	rem/ décale de 8 pixels le texte sur la gauche
+	fix/ temp = /c %IT_X% / 2
+	fix/ lblPosX = /C %IcoPosX% + %temp%
+	
+	rem/ On centre le texte en dessous de l'icone
+	fix/ TailleTexte = /C LEN>%FNAME%
+	fix/ TailleTexte = /C %TailleTexte% * 8
+	fix/ TailleTexte = /C %TailleTexte% / 2
+	fix/ TailleTexte = /C %TailleTexte% - 5
+	fix/ TailleTexte = /C INT>%TailleTexte%
+	fix/ lblPosX = /C %lblPosX% - %TailleTexte%
+
+	fix/ lblPosY = /C %lblPosY% + 4
+	
+	rem/ images des icônes
+	ini/ imagebox(
+		ini;nom = "IMG%INCF%"
+		ini;fenetre = %AG_F%
+		ini;couleur = "255,255,255"
+		ini;couleurf = "001,001,001"
+		ini;image = "%IMGEXT%"
+		ini;px = "%IcoPosX%"
+		ini;py = "%IcoPosY%"
+		ini;tx = "%IT_X%"
+		ini;ty = "%IT_Y%"
+		ini;type = "0"
+	creer/
+	ev/ %EVENTS%\EVENTS.CPC
+	ini/ imagebox)
+	
+	fix/ TABEVNT(%INCF%) = IMG%INCF%
+	
+	rem/ nom des icônes
+	ini/ label(
+		ini;fenetre = %AG_F%
+		ini;nom = "LBL%INCF%"
+		ini;texte = "%FNAME%"
+		ini;px = "%lblPosX%"
+		ini;py = "%lblPosY%"
+		ini;couleurf = "%NOSELECT_COLOR_R%,%NOSELECT_COLOR_V%,%NOSELECT_COLOR_B%"
+		ini;couleurp = "%CHAR_COLOR_R%,%CHAR_COLOR_V%,%CHAR_COLOR_B%"
+		ini;type = "3"
+		creer/
+	ini/ label)
+	
+	rem/ incremente INC_ICX de SPACE_X pixel et si la valeur dépasse la zone de rendu
+	rem/ alors INC_ICX = 0 et on incremente INC_ICY
+	fix/ INC_ICX = /C %INC_ICX% + %SPACE_X%
+	SI/ %INC_ICX% > %ZONE_TX% (:
+		fix/ INC_ICX = 0
+		fix/ INC_ICY = /C %INC_ICY% + %SPACE_Y%
+	fin/ SI
+	
+	rem/ si il n y a plus de place pour dessiner les icônes alors on sort de la boucle
+	SI/ %INC_ICY% > %ZONE_TY% (:
+		Aller/ FEND
+	fin/ SI
+fin/ SI
+fix/ INCF = /C %INCF% + 1
+Aller/ BFI
+
+:FEND:
+rem/ On actualise absolument tout!
+actualise/ /FOND
+stop/

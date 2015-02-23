@@ -1,0 +1,14 @@
+fix/ debug = 0
+FIX/ VAR1 = 1
+:boucle:
+@fix/ VAR1 = %VAR1%1
+cls/
+fix/ TMP = /c LEN >%VAR1%
+fix/ TMP1 = /c %TMP% * 8
+fix/ TMP2 = /c %TMP1% / 1024
+txt/ %TMP1% octet
+txt/ %TMP2% Ko
+sys/ /mem
+aller/ boucle
+
+

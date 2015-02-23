@@ -1,0 +1,61 @@
+REM/ Programme pour creer une fenetre et une barre de progression
+REM/ 24/01/2014
+
+FIX/ PASSE = 0
+
+INI/ FENETRE(
+	INI;NOM 	= "FENETRE_PROGRESS"
+	INI;TEXTE	= "Test de barre de progression"
+	INI;TYPE	= "1"
+	INI;COULEUR	= "255,255,255"
+	INI;PX		= "MX"
+	INI;PY		= "MY"
+	INI;TX		= "400"
+	INI;TY		= "150"
+	CREER/
+INI/ FENETRE)
+
+
+INI/ PROGRESSION(
+	INI;NOM		= "BAR_PROGRESS"
+	INI;FENETRE	= "FENETRE_PROGRESS"
+	INI;STATUT	= "50"
+	INI;TYPE	= "1"
+	INI;IMG		= "0"
+	INI;COULEUR	= "220,220,220"
+	INI;COULEURP	= "255,050,050"
+	INI;PX		= "10"
+	INI;PY		= "100"
+	INI;TX		= "370"
+	INI;TY		= "20"
+	CREER/
+INI/ PROGRESSION)
+
+INI/ COMPTEUR(
+	INI;NOM 	= "COMPT_PROGRESS"
+	INI;FENETRE	= "FENETRE_PROGRESS"
+	INI;INTERVALLE	= "0.300"
+	INI;ACTIVE	= "1"
+	CREER/
+	EV/ %PROG%\PROGRESS.CPC
+INI/ COMPTEUR)
+
+stop/
+
+
+PROC/ COMPT_PROGRESS(CYCLE)
+	FIX/ PASSE = /C %PASSE% + 3
+	SI/ %PASSE% > 100 (:ALLER/ FIN:)
+	INI/ PROGRESSION(
+		INI;NOM		= "BAR_PROGRESS"
+		INI;STATUT	= "%PASSE%"
+		CREER/
+	INI/ PROGRESSION
+        stop/
+FIN/ PROC
+
+
+:FIN:
+fermer/ FENETRE_PROGRESS
+Msgbox/ /texte=Fin du comptage! /titre=Message! /mode=1 /alerte=0
+

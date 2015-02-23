@@ -1,0 +1,26 @@
+#EV.DISPONIBLE(CLIC)
+rem/ Microsf01 Cpcdos OS2.0.5
+rem/ CraftyOS 1.0
+rem/ FAVIER Sébastien 01
+
+rem/ Fichier evenement du scrol
+
+
+Proc/ EXP_SCROLTH(CLIC)
+	rem/ debut la liste des fichiers
+	fix/ EXP_SCROL = 1
+FIN/ proc
+
+Proc/ EXP_SCROLH(CLIC)
+	rem/ Sauter 3 ligne par ligne pour decendre la liste des fichiers
+	si/ %EXP_SCROL% < 0 (:Aller/ SAUT:)
+	FIX/ EXP_TSCROL = H
+        fix/ EXP_SCROL = /c %EXP_SCROL% - 3
+	:SAUT:
+FIN/ proc
+
+Proc/ EXP_SCROLB(CLIC)
+	rem/ Sauter 1 "ligne par ligne pour monter la liste des fichiers
+	Fix/ EXP_TSCROL = B
+        fix/ EXP_SCROL = /c %EXP_SCROL% + 3
+FIN/ proc

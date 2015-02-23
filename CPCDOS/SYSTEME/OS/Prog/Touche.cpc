@@ -1,0 +1,9 @@
+fix/ debug = 1
+fix/ variable = 0
+
+:debut:
+fix/ variable = 0
+touche/ /P variable
+si/ %variable% N 0 (:txt/ Touche %variable% presse!:)
+si/ %variable% = q (:stop/:)
+aller/ debut

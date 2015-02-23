@@ -1,0 +1,6 @@
+fix/ VAR1 = 5
+fix/ VAR2 = 10
+
+SI/ %VAR1% N %VAR2% (:
+	txt/ n'est pas egale
+FIN/ SI

@@ -1,0 +1,548 @@
+rem/ Faire souffir le Kernel x)
+rem/ Favier Sébastien 01
+rem/ 15/10/2012 - Au foyer du lycée ;P
+
+txt/
+txt/ ** Souffir le kernel (a) ! :P **
+txt/
+
+rem/ faire tourner le processeur qu'a 20% mais 100% pour le Kernel
+fix/ CLK = 100
+
+txt/ ** GO :) **
+@fix/ ax = 1
+txt/ %ax%
+@fix/ ax = /c %ax% + 16
+txt/ %ax%
+@fix/ ax = /c %ax% + 13
+txt/ %ax%
+@Fix/ ax = /c %ax% + %ax%
+txt/ %ax%
+@fix/ ax = /c %ax% + 16
+txt/ %ax%
+@fix/ ax = /c %ax% + 13
+txt/ %ax%
+@Fix/ ax = /c %ax% + %ax%
+
+txt/ %ax%
+@fix/ ax = /c %ax% + 16
+txt/ %ax%
+@fix/ ax = /c %ax% + 13
+txt/ %ax%
+@Fix/ ax = /c %ax% + %ax%
+
+txt/ %ax%
+@fix/ ax = /c %ax% + 16
+txt/ %ax%
+@fix/ ax = /c %ax% + 13
+txt/ %ax%
+@Fix/ ax = /c %ax% + %ax%
+
+txt/ %ax%
+@fix/ ax = /c %ax% + 16
+txt/ %ax%
+@fix/ ax = /c %ax% + 13
+txt/ %ax%
+@Fix/ ax = /c %ax% + %ax%
+
+txt/ %ax%
+@fix/ ax = /c %ax% + 16
+txt/ %ax%
+@fix/ ax = /c %ax% + 13
+txt/ %ax%
+@Fix/ ax = /c %ax% + %ax%
+
+txt/ %ax%
+@fix/ ax = /c %ax% + 16
+txt/ %ax%
+@fix/ ax = /c %ax% + 13
+txt/ %ax%
+@Fix/ ax = /c %ax% + %ax%
+
+txt/ %ax%
+@fix/ ax = /c %ax% + 16
+txt/ %ax%
+@fix/ ax = /c %ax% + 13
+txt/ %ax%
+@Fix/ ax = /c %ax% + %ax%
+
+txt/ %ax%
+@fix/ ax = /c %ax% + 16
+txt/ %ax%
+@fix/ ax = /c %ax% + 13
+txt/ %ax%
+@Fix/ ax = /c %ax% + %ax%
+
+txt/ %ax%
+@fix/ ax = /c %ax% + 16
+txt/ %ax%
+@fix/ ax = /c %ax% + 13
+txt/ %ax%
+@Fix/ ax = /c %ax% + %ax%
+
+txt/ %ax%
+@fix/ ax = /c %ax% + 16
+txt/ %ax%
+@fix/ ax = /c %ax% + 13
+txt/ %ax%
+@Fix/ ax = /c %ax% + %ax%
+
+txt/ %ax%
+@fix/ ax = /c %ax% + 16
+txt/ %ax%
+@fix/ ax = /c %ax% + 13
+txt/ %ax%
+@Fix/ ax = /c %ax% + %ax%
+
+txt/ %ax%
+@fix/ ax = /c %ax% + 16
+txt/ %ax%
+@fix/ ax = /c %ax% + 13
+txt/ %ax%
+@Fix/ ax = /c %ax% + %ax%
+
+txt/ %ax%
+@fix/ ax = /c %ax% + 16
+txt/ %ax%
+@fix/ ax = /c %ax% + 13
+txt/ %ax%
+@Fix/ ax = /c %ax% + %ax%
+
+txt/ %ax%
+@fix/ ax = /c %ax% + 16
+txt/ %ax%
+@fix/ ax = /c %ax% + 13
+txt/ %ax%
+@Fix/ ax = /c %ax% + %ax%
+
+txt/ %ax%
+@fix/ ax = /c %ax% + 16
+txt/ %ax%
+@fix/ ax = /c %ax% + 13
+txt/ %ax%
+@Fix/ ax = /c %ax% + %ax%
+
+txt/ %ax%
+@fix/ ax = /c %ax% + 16
+txt/ %ax%
+@fix/ ax = /c %ax% + 13
+txt/ %ax%
+@Fix/ ax = /c %ax% + %ax%
+
+txt/ %ax%
+@fix/ ax = /c %ax% + 16
+txt/ %ax%
+@fix/ ax = /c %ax% + 13
+txt/ %ax%
+@Fix/ ax = /c %ax% + %ax%
+
+txt/ %ax%
+@fix/ ax = /c %ax% + 16
+txt/ %ax%
+@fix/ ax = /c %ax% + 13
+txt/ %ax%
+@Fix/ ax = /c %ax% + %ax%
+
+txt/ %ax%
+@fix/ ax = /c %ax% + 16
+txt/ %ax%
+@fix/ ax = /c %ax% + 13
+txt/ %ax%
+@Fix/ ax = /c %ax% + %ax%
+
+txt/ %ax%
+@fix/ ax = /c %ax% + 16
+txt/ %ax%
+@fix/ ax = /c %ax% + 13
+txt/ %ax%
+@Fix/ ax = /c %ax% + %ax%
+
+txt/ %ax%
+@fix/ ax = /c %ax% + 16
+txt/ %ax%
+@fix/ ax = /c %ax% + 13
+txt/ %ax%
+@Fix/ ax = /c %ax% + %ax%
+
+txt/ %ax%
+@fix/ ax = /c %ax% + 16
+txt/ %ax%
+@fix/ ax = /c %ax% + 13
+txt/ %ax%
+@Fix/ ax = /c %ax% + %ax%
+
+txt/ %ax%
+@fix/ ax = /c %ax% + 16
+txt/ %ax%
+@fix/ ax = /c %ax% + 13
+txt/ %ax%
+@Fix/ ax = /c %ax% + %ax%
+
+txt/ %ax%
+@fix/ ax = /c %ax% + 16
+txt/ %ax%
+@fix/ ax = /c %ax% + 13
+txt/ %ax%
+@Fix/ ax = /c %ax% + %ax%
+
+txt/ %ax%
+@fix/ ax = /c %ax% + 16
+txt/ %ax%
+@fix/ ax = /c %ax% + 13
+txt/ %ax%
+@Fix/ ax = /c %ax% + %ax%
+
+txt/ %ax%
+@fix/ ax = /c %ax% + 16
+txt/ %ax%
+@fix/ ax = /c %ax% + 13
+txt/ %ax%
+@Fix/ ax = /c %ax% + %ax%
+
+txt/ %ax%
+@fix/ ax = /c %ax% + 16
+txt/ %ax%
+@fix/ ax = /c %ax% + 13
+txt/ %ax%
+@Fix/ ax = /c %ax% + %ax%
+
+txt/ %ax%
+@fix/ ax = /c %ax% + 16
+txt/ %ax%
+@fix/ ax = /c %ax% + 13
+txt/ %ax%
+@Fix/ ax = /c %ax% + %ax%
+
+txt/ %ax%
+@fix/ ax = /c %ax% + 16
+txt/ %ax%
+@fix/ ax = /c %ax% + 13
+txt/ %ax%
+@Fix/ ax = /c %ax% + %ax%
+
+txt/ %ax%
+@fix/ ax = /c %ax% + 16
+txt/ %ax%
+@fix/ ax = /c %ax% + 13
+txt/ %ax%
+@Fix/ ax = /c %ax% + %ax%
+
+txt/ %ax%
+@fix/ ax = /c %ax% + 16
+txt/ %ax%
+@fix/ ax = /c %ax% + 13
+txt/ %ax%
+@Fix/ ax = /c %ax% + %ax%
+
+txt/ %ax%
+@fix/ ax = /c %ax% + 16
+txt/ %ax%
+@fix/ ax = /c %ax% + 13
+txt/ %ax%
+@Fix/ ax = /c %ax% + %ax%
+
+txt/ %ax%
+@fix/ ax = /c %ax% + 16
+txt/ %ax%
+@fix/ ax = /c %ax% + 13
+txt/ %ax%
+@Fix/ ax = /c %ax% + %ax%
+
+txt/ %ax%
+@fix/ ax = /c %ax% + 16
+txt/ %ax%
+@fix/ ax = /c %ax% + 13
+txt/ %ax%
+@Fix/ ax = /c %ax% + %ax%
+
+txt/ %ax%
+@fix/ ax = /c %ax% + 16
+txt/ %ax%
+@fix/ ax = /c %ax% + 13
+txt/ %ax%
+@Fix/ ax = /c %ax% + %ax%
+
+txt/ %ax%
+@fix/ ax = /c %ax% + 16
+txt/ %ax%
+@fix/ ax = /c %ax% + 13
+txt/ %ax%
+@Fix/ ax = /c %ax% + %ax%
+
+txt/ %ax%
+@fix/ ax = /c %ax% + 16
+txt/ %ax%
+@fix/ ax = /c %ax% + 13
+txt/ %ax%
+@Fix/ ax = /c %ax% + %ax%
+
+txt/ %ax%
+@fix/ ax = /c %ax% + 16
+txt/ %ax%
+@fix/ ax = /c %ax% + 13
+txt/ %ax%
+@Fix/ ax = /c %ax% + %ax%
+
+txt/ %ax%
+@fix/ ax = /c %ax% + 16
+txt/ %ax%
+@fix/ ax = /c %ax% + 13
+txt/ %ax%
+@Fix/ ax = /c %ax% + %ax%
+
+txt/ %ax%
+@fix/ ax = /c %ax% + 16
+txt/ %ax%
+@fix/ ax = /c %ax% + 13
+txt/ %ax%
+@Fix/ ax = /c %ax% + %ax%
+
+txt/ %ax%
+@fix/ ax = /c %ax% + 16
+txt/ %ax%
+@fix/ ax = /c %ax% + 13
+txt/ %ax%
+@Fix/ ax = /c %ax% + %ax%
+
+txt/ %ax%
+@fix/ ax = /c %ax% + 16
+txt/ %ax%
+@fix/ ax = /c %ax% + 13
+txt/ %ax%
+@Fix/ ax = /c %ax% + %ax%
+
+txt/ %ax%
+@fix/ ax = /c %ax% + 16
+txt/ %ax%
+@fix/ ax = /c %ax% + 13
+txt/ %ax%
+@Fix/ ax = /c %ax% + %ax%
+
+txt/ %ax%
+@fix/ ax = /c %ax% + 16
+txt/ %ax%
+@fix/ ax = /c %ax% + 13
+txt/ %ax%
+@Fix/ ax = /c %ax% + %ax%
+
+txt/ %ax%
+@fix/ ax = /c %ax% + 16
+txt/ %ax%
+@fix/ ax = /c %ax% + 13
+txt/ %ax%
+@Fix/ ax = /c %ax% + %ax%
+
+txt/ %ax%
+@fix/ ax = /c %ax% + 16
+txt/ %ax%
+@fix/ ax = /c %ax% + 13
+txt/ %ax%
+@Fix/ ax = /c %ax% + %ax%
+
+txt/ %ax%
+@fix/ ax = /c %ax% + 16
+txt/ %ax%
+@fix/ ax = /c %ax% + 13
+txt/ %ax%
+@Fix/ ax = /c %ax% + %ax%
+
+txt/ %ax%
+@fix/ ax = /c %ax% + 16
+txt/ %ax%
+@fix/ ax = /c %ax% + 13
+txt/ %ax%
+@Fix/ ax = /c %ax% + %ax%
+
+txt/ %ax%
+@fix/ ax = /c %ax% + 16
+txt/ %ax%
+@fix/ ax = /c %ax% + 13
+txt/ %ax%
+@Fix/ ax = /c %ax% + %ax%
+
+txt/ %ax%
+@fix/ ax = /c %ax% + 16
+txt/ %ax%
+@fix/ ax = /c %ax% + 13
+txt/ %ax%
+@Fix/ ax = /c %ax% + %ax%
+
+txt/ %ax%
+@fix/ ax = /c %ax% + 16
+txt/ %ax%
+@fix/ ax = /c %ax% + 13
+txt/ %ax%
+@Fix/ ax = /c %ax% + %ax%
+
+txt/ %ax%
+@fix/ ax = /c %ax% + 16
+txt/ %ax%
+@fix/ ax = /c %ax% + 13
+txt/ %ax%
+@Fix/ ax = /c %ax% + %ax%
+
+txt/ %ax%
+@fix/ ax = /c %ax% + 16
+txt/ %ax%
+@fix/ ax = /c %ax% + 13
+txt/ %ax%
+@Fix/ ax = /c %ax% + %ax%
+
+txt/ %ax%
+@fix/ ax = /c %ax% + 16
+txt/ %ax%
+@fix/ ax = /c %ax% + 13
+txt/ %ax%
+@Fix/ ax = /c %ax% + %ax%
+
+txt/ %ax%
+@fix/ ax = /c %ax% + 16
+txt/ %ax%
+@fix/ ax = /c %ax% + 13
+txt/ %ax%
+@Fix/ ax = /c %ax% + %ax%
+
+txt/ %ax%
+@fix/ ax = /c %ax% + 16
+txt/ %ax%
+@fix/ ax = /c %ax% + 13
+txt/ %ax%
+@Fix/ ax = /c %ax% + %ax%
+
+txt/ %ax%
+@fix/ ax = /c %ax% + 16
+txt/ %ax%
+@fix/ ax = /c %ax% + 13
+txt/ %ax%
+@Fix/ ax = /c %ax% + %ax%
+
+txt/ %ax%
+@fix/ ax = /c %ax% + 16
+txt/ %ax%
+@fix/ ax = /c %ax% + 13
+txt/ %ax%
+@Fix/ ax = /c %ax% + %ax%
+
+txt/ %ax%
+@fix/ ax = /c %ax% + 16
+txt/ %ax%
+@fix/ ax = /c %ax% + 13
+txt/ %ax%
+@Fix/ ax = /c %ax% + %ax%
+
+txt/ %ax%
+@fix/ ax = /c %ax% + 16
+txt/ %ax%
+@fix/ ax = /c %ax% + 13
+txt/ %ax%
+@Fix/ ax = /c %ax% + %ax%
+
+txt/ %ax%
+@fix/ ax = /c %ax% + 16
+txt/ %ax%
+@fix/ ax = /c %ax% + 13
+txt/ %ax%
+@Fix/ ax = /c %ax% + %ax%
+
+txt/ %ax%
+@fix/ ax = /c %ax% + 16
+txt/ %ax%
+@fix/ ax = /c %ax% + 13
+txt/ %ax%
+@Fix/ ax = /c %ax% + %ax%
+
+txt/ %ax%
+@fix/ ax = /c %ax% + 16
+txt/ %ax%
+@fix/ ax = /c %ax% + 13
+txt/ %ax%
+@Fix/ ax = /c %ax% + %ax%
+
+txt/ %ax%
+@fix/ ax = /c %ax% + 16
+txt/ %ax%
+@fix/ ax = /c %ax% + 13
+txt/ %ax%
+@Fix/ ax = /c %ax% + %ax%
+
+txt/ %ax%
+@fix/ ax = /c %ax% + 16
+txt/ %ax%
+@fix/ ax = /c %ax% + 13
+txt/ %ax%
+@Fix/ ax = /c %ax% + %ax%
+
+txt/ %ax%
+@fix/ ax = /c %ax% + 16
+txt/ %ax%
+@fix/ ax = /c %ax% + 13
+txt/ %ax%
+@Fix/ ax = /c %ax% + %ax%
+
+txt/ %ax%
+@fix/ ax = /c %ax% + 16
+txt/ %ax%
+@fix/ ax = /c %ax% + 13
+txt/ %ax%
+@Fix/ ax = /c %ax% + %ax%
+
+txt/ %ax%
+@fix/ ax = /c %ax% + 16
+txt/ %ax%
+@fix/ ax = /c %ax% + 13
+txt/ %ax%
+@Fix/ ax = /c %ax% + %ax%
+
+txt/ %ax%
+@fix/ ax = /c %ax% + 16
+txt/ %ax%
+@fix/ ax = /c %ax% + 13
+txt/ %ax%
+@Fix/ ax = /c %ax% + %ax%
+
+txt/ %ax%
+@fix/ ax = /c %ax% + 16
+txt/ %ax%
+@fix/ ax = /c %ax% + 13
+txt/ %ax%
+@Fix/ ax = /c %ax% + %ax%
+
+txt/ %ax%
+@fix/ ax = /c %ax% + 16
+txt/ %ax%
+@fix/ ax = /c %ax% + 13
+txt/ %ax%
+@Fix/ ax = /c %ax% + %ax%
+
+txt/ %ax%
+@fix/ ax = /c %ax% + 16
+txt/ %ax%
+@fix/ ax = /c %ax% + 13
+txt/ %ax%
+@Fix/ ax = /c %ax% + %ax%
+
+txt/ %ax%
+@fix/ ax = /c %ax% + 16
+txt/ %ax%
+@fix/ ax = /c %ax% + 13
+txt/ %ax%
+@Fix/ ax = /c %ax% + %ax%
+
+txt/ %ax%
+@fix/ ax = /c %ax% + 16
+txt/ %ax%
+@fix/ ax = /c %ax% + 13
+txt/ %ax%
+@Fix/ ax = /c %ax% + %ax%
+
+txt/ %ax%
+@fix/ ax = /c %ax% + 16
+txt/ %ax%
+@fix/ ax = /c %ax% + 13
+txt/ %ax%
+@Fix/ ax = /c %ax% + %ax%
+
+
+txt/
+txt/ ** Finis ! :) **
+stop/

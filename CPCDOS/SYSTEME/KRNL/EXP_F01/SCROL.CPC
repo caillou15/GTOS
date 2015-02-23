@@ -1,0 +1,67 @@
+rem/ Microsf01 Cpcdos OS2.0.5
+rem/ FAVIER Sébastien 01
+
+rem/ Creer l'ojet/imagebox et evenement du scrol bar
+
+rem/ Variables a communiquer :
+rem/  EXP_FENETRE	(Fenetre)
+rem/  EXP_SCROLPX	(Position X deS images scrol )
+rem/  EXP_SCROHPY   xx    (Position Y de l'image scrol du HAUT)
+rem/  EXP_SCROBPY   xx    (Position Y de l'image scrol du BAS)
+
+FIX/ EXP_SCROLPX = /C %EXP_DIM_X% - %EXP_FPOS_X%
+FIX/ EXP_SCROLPX = /C %EXP_SCROLPX% - 25
+
+ini/ imagebox(
+	ini;NOM = "EXP_SCROLH"
+	ini;FENETRE = "%EXP_FENETRE%"
+ 	ini;couleur = "255,255,255"
+ 	ini;type = "0"
+ 	ini;couleurf = "001,001,001"
+ 	ini;image = "OS\Media\Icones\MScrolH.BMP"
+	ini;px = "%EXP_SCROLPX%"
+	ini;py = "%EXP_SCROLHPY%"
+ 	ini;tx = "20"
+ 	ini;ty = "35"
+ 	creer/
+	rem/ Les evenements dans le fichier suivant:
+ 	ev/ KRNL\EXP_F01\SCROL_EV.CPC
+ini/ imagebox)
+
+ini/ imagebox(
+	ini;NOM = "EXP_SCROLB"
+	ini;FENETRE = "%EXP_FENETRE%"
+ 	ini;couleur = "255,255,255"
+ 	ini;type = "0"
+ 	ini;couleurf = "001,001,001"
+ 	ini;image = "OS\Media\Icones\MScrolB.BMP"
+	ini;px = "%EXP_SCROLPX%"
+	ini;py = "%EXP_SCROLBPY%"
+ 	ini;tx = "20"
+ 	ini;ty = "35"
+ 	creer/
+	rem/ Les evenements dans le fichier suivant:
+ 	ev/ KRNL\EXP_F01\SCROL_EV.CPC
+ini/ imagebox)
+
+rem/ Acces rapide
+
+ini/ imagebox(
+	ini;NOM = "EXP_SCROLTH"
+ 	ini;FENETRE = "%EXP_FENETRE%"
+  	ini;couleur = "255,255,255"
+  	ini;type = "0"
+  	ini;couleurf = "001,001,001"
+  	ini;image = "OS\Media\Icones\MScrolTH.BMP"
+ 	ini;px = "%EXP_SCROLPX%"
+ 	ini;py = "25"
+  	ini;tx = "20"
+  	ini;ty = "35"
+  	creer/
+ 	rem/ Les evenements dans le fichier suivant:
+  	ev/ KRNL\EXP_F01\SCROL_EV.CPC
+ini/ imagebox)
+
+
+
+stop/

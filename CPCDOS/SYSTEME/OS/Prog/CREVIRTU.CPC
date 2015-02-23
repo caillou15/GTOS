@@ -1,0 +1,44 @@
+@fix/ debug = 0
+@FIX/ DEBUG_TMP = 0
+SI/ %DEBUG% = 1 (:FIX/ DEBUG_TMP = 1:)
+REM/ Programme pour cr‚er un boot virtuel automatiquement
+REM/ en utilisant le lecteur virtuel. Performances atteintes.
+
+REM/ Cr‚e par FAVIER S‚bastien 01
+REM/ Le 18/07/2014
+
+REM/ Executer la routine LC / IUG
+SI/ %LC_IUG_SOURCE% = OK (:
+	FIX/ LC_IUG_SOURCE = 0
+SINON/
+	FIX/ LC_IUG_SOURCE = %EXE_EN_COURS%
+	EXE/ KRNL\LC_IUG\LC_IUG.CPC
+FIN/ SI
+
+REM/ Passer en mode console afin d'etre en 600x400
+REM/ (Performance grahique du DOS)
+TXT/ ETAPE 1/4 : Passage en mode console
+LC/
+
+
+REM/ Creer le lecteur virtuel
+TXT/ ETAPE 2/4 : Cr‚ation du lecteur virtuel
+SYS/ /VIRTUEL /NONDEF
+
+
+REM/ Creer l'image virtuel dans le lecteur virtuel cr‚e
+TXT/ ETAPE 3/4 : Cr‚ation de l'image virtuel...
+SYS/ /CREERIMG %SYS_VIRTUEL_NONDEF%
+
+TXT/ ETAPE 4/4 : Copie de l'image virtuel de %SYS_VIRTUEL_NONDEF% au principal
+COPIER/ %SYS_VIRTUEL_NONDEF%\CPCDOS\KRNL_205.IMG %SYS.BOOT%\..\KRNL_205.IMG
+txt/
+txt/ Op‚ration termin‚e
+txt/
+SI/ %DEBUG_TMP% = 1 (:
+	FIX/ /S DEBUG_TMP
+	FIX/ DEBUG = 1
+FIN/ SI
+STOP/
+
+

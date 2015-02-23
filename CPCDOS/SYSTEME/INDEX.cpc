@@ -1,0 +1,9 @@
+rem/ Microsf01 Kernel Cpcdos OS2.0.5
+rem/ Indexeur - Celui qui indique où se trouve le fichier OS.cpc
+rem/ Donc où se trouve l'OS quoi
+
+autoexec:
+
+exe/ OS\OS.cpc
+
+

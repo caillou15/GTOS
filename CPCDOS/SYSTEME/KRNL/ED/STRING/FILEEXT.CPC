@@ -1,0 +1,16 @@
+rem/ recupere l extension d un fichier
+rem/ ARGA = nom du fichier
+
+fix/ ARGB = 1
+fix/ ARGC = .
+fix/ RESULTA = 0
+
+exe/ & %STRING%\INDEXOF.CPC
+
+si/ %RESULTA% > 0 (:
+	rem/ fix/ RESULTA = /C %RESULTA% + 1
+	fix/ RESULTA = /C CAP >%ARGA%;%RESULTA%
+	rem/ fix/ RESULTA = /C CAP >%ARGA%;%RESULTA%-3
+fin/ si
+
+stop/

@@ -1,0 +1,61 @@
+REM/ Programme test pour suroler les boutons ;-)
+
+Rem/ Creer une fenetre
+ini/ fenetre(
+        ini;nom = "FENETRE_SURVOLE"
+        ini;texte = "Survole teste!"
+	ini;img = "OS\MEDIA\ICONES\ICO_TEST.BMP"
+        ini;type = "1;AGR1,SIZ1"
+        ini;couleur = "087,215,186"
+        ini;tx = "300"
+        ini;ty = "250"
+        ini;px = "MX"
+        ini;py = "250"
+        creer/
+ini/ fenetre)
+
+rem/ Creer un bouton
+ini/ bouton(
+        ini;nom = "BOUTON1_TEST"
+        ini;fenetre = "FENETRE_SURVOLE"
+        ini;texte = "Survole moi!"
+        ini;img = "7"
+        ini;couleurf = "255,255,255"
+        ini;couleurp = "255,000,100"
+        ini;tx = "180"
+        ini;ty = "30"
+        ini;px = "10"
+        ini;py = "100"
+        creer/
+	ev/ %EXE_EN_COURS%
+ini/ bouton)
+rem/ la variable "exe_en_cours" correspond au fichier actuel ;-)
+
+
+REM/ Si l'utilisateur survole un bouton
+PROC/ BOUTON1_TEST(SURVOLE)
+	ini/ bouton(
+	        ini;nom = "BOUTON1_TEST"
+		ini;texte = "Clique moi!"
+		CREER/
+	INI/ Bouton)
+FIN/ PROC
+
+REM/ Si l'utilisateur enleve son curseur du bouton
+PROC/ BOUTON1_TEST(NONSURVOLE)
+	ini/ bouton(
+	        ini;nom = "BOUTON1_TEST"
+		ini;texte = "Reviens!"
+		CREER/
+	INI/ Bouton)
+FIN/ PROC
+
+REM/ Si l'utilisateur clique sur le bouton
+PROC/ BOUTON1_TEST(CLIC)
+	ini/ bouton(
+	        ini;nom = "BOUTON1_TEST"
+		ini;texte = "Survole moi!"
+		CREER/
+	INI/ Bouton)
+	Msgbox/ Tu m'as clique dessu !
+FIN/ PROC

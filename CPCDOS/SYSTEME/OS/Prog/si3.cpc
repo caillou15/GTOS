@@ -1,0 +1,5 @@
+si/ 1 = 1 (:
+	msgbox/ /texte=vrais! /titre=123 /mode=1 /alerte=0
+sinon/
+	msgbox/ /texte=Faux! /titre=123 /mode=1 /alerte=0
+fin/ si

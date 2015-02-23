@@ -1,0 +1,47 @@
+fix/ debug = 0
+
+:recommencer:
+txt/ Bienvenue sur le programme exemple d'Aly !!
+txt/ Comment vous appelez vous ?
+fix/ /q NOM
+txt/ Aaaah donc, vous vous appelez %NOM% !
+txt/ Pourriez vous me donner votre age ?
+fix/ /q AGE
+txt/ D'accord %NOM%, vous avez %AGE%ans
+si/ %AGE% > 18 (:txt/ Vous etes majeur:)
+si/ %AGE% < 18 (:txt/ Vous etes mineur:)
+
+txt/ Nous allons faire un petit test d'intelligence
+fix/ ESSAIS = 0
+
+:boucle1:
+txt/ Que fait 98 x 2 + 54 ?
+fix/ REP = 0
+fix/ ESSAIS = /c %ESSAIS% + 1
+fix/ RES = 250
+fix/ /q REP
+si/ %REP% N %RES% (:aller/ boucle1:)
+si/ %REP% = %RES% (:txt/ Bien joue ! 98*2 = 196    196+54 = 250 !:)
+
+:boucle2:
+txt/ Que fait 25 x 13 + 111 - 36 ?
+fix/ REP = 0
+fix/ RES = 400
+fix/ ESSAIS = /c %ESSAIS% + 1
+fix/ /q REP
+si/ %REP% N %RES% (:aller/ boucle2:)
+si/ %REP% = %RES% (:txt/ Bien joue ! Le resultat est bien 400:)
+si/ %ESSAIS% < 3 (:txt/ Vous avez reussi les 2 tests du premier coup !:)
+si/ %ESSAIS% > 2 (:txt/ Vous avez reussi le test en %ESSAIS% essais !:)
+
+txt/ Voulez vous rejouer le programme ? ( 1 = Oui 0 = Non )
+fix/ REJOUER = 5
+touche/ /p REJOUER
+si/ %REJOUER% = 1 (:aller/ recommencer:)
+si/ %REJOUER% = 0 (:txt/ Aurevoir et bonne journée !:)
+stop/
+
+
+
+
+

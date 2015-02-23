@@ -1,0 +1,29 @@
+﻿
+fix/ TKPY = /C %ECRY% - 32
+ini/ fenetre(
+		ini;nom = "TZDESKTOP"
+		ini;texte = "bureau"
+		ini;type = "3;M0,A1,V1,R0,F0,T0,FP0,C0,O0,AGR0,SIZ0,B0,BC0,FTC,AP1"
+		ini;couleur = "255,255,255"
+		ini;tx = "EX"
+		ini;ty = "%TKPY%"
+		ini;px = "0"
+		ini;py = "0"
+		creer/
+		ev/ %EVENTS%\EVENTS.CPC
+ini/ fenetre)
+
+focus/ TZDESKTOP
+
+@fix/ /s TKPY
+
+rem/ ED: Explorateur de dossier
+rem/ pour l'utiliser, il suffit de lui donner un nom de fenetre déjà créé et le dossier à explorer
+rem/ pour ce faire, il suffit de fixer les variables AG_F (ArGument Fenêtre) et AG_D (ArGument Dossier)
+rem/ puis d'executer le fichier ED.CPC
+rem/ -------------ATTENTION AVANTE TOUTE UTILISATION IL FAUT QUE LE FICHIER DE CONFIGURATION (SYSPROG\CONFIG.CPC) EST ÉTÉ EXECUTÉ !!!! -----------------
+rem/ dans cette version de test, config.cpc a été ajouté dans TZOS\Index.cpc
+fix/ AG_F = "TZDESKTOP"
+fix/ AG_D = OS\Comptes\bureau
+exe/ KRNL\ED\ED.CPC
+stop/

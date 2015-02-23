@@ -1,0 +1,9 @@
+PROC/ MA_COMMANDE(ENTRER)
+	rem/ si l'utilisateur presse la touche entrer alors
+        rem/ executer la commande dans la la variable
+        INI/ TEXTEBOX(
+                INI;NOM = "MA_COMMANDE"
+                INI;TEXTE = "#%COMMANDE"
+        INI/ TEXTEBOX)
+        CMD/ %COMMANDE%
+FIN/ PROC

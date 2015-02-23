@@ -1,0 +1,25 @@
+Rem/ Microsf01 Cpcdos OS2.0.1
+rem/ Fichier d'initialisation du Kernel 1
+rem/ Ne pas modifier , veuillez consulter le manuel du Kernel avant toute modifications.
+
+
+:_INI_1:
+txt/ *** Traitement de KRNL_SYS.CPC ***
+FIX/ BAR_PROGRESSION = 1
+exe/ INIT\KRNL_SYS.CPC /l:_SYS
+:_KRNL_SYS1:
+exe/ INIT\KRNL_SYS.CPC /l:_AFFICHAGE
+:_KRNL_SYS2:
+FIX/ BAR_PROGRESSION = 
+exe/ INIT\KRNL_SYS.CPC /l:_SYSTEST
+:_KRNL_SYS3:
+FIX/ BAR_PROGRESSION = 40
+exe/ INIT\KRNL_SYS.CPC /l:_MEMTEST
+:_KRNL_SYS4:
+FIX/ BAR_PROGRESSION = 50
+exe/ INIT\KRNL_SYS.CPC /l:_MEMCLEAR
+:_FIN_INI_1:
+FIX/ BAR_PROGRESSION = 60
+
+
+

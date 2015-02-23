@@ -1,0 +1,18 @@
+rem/ argument:
+rem/ ARGA = F;N=TEXTE.TXT;T=512;A=A
+
+rem/ capture le premier caractere (F=fichier, D=dossier)
+fix/ FTYPE = /C CAP >%ARGA%;1-1
+
+rem/ cherche le prochain point virgule pour capturer le nom du fichier
+fix/ ARGB = 5
+fix/ ARGC = &
+exe/ & %STRING%\INDEXOF.CPC
+
+rem/ le nom du fichier est entre le 5 eme caractere et la position trouve du point virgule moins 5 + 1
+fix/ FINF = /C %RESULTA% - 6
+fix/ FNAME = /C CAP >%ARGA%;5-%FINF%
+
+rem/ TODO: ajouter RESULTC = taille RESULTD = attribut
+fix/ RESULTA = %FTYPE%
+fix/ RESULTB = %FNAME%

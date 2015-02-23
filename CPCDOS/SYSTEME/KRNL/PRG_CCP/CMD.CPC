@@ -1,0 +1,27 @@
+REM/ Executeur de commandes via le menu PROGRAMMES
+
+:TEST:
+test/
+stop/
+
+
+:LC:
+lc/
+stop/
+
+:CONSOLE:
+lc/ /console
+stop/
+
+
+:EDIT:
+lc/
+dos/ edit
+iug/
+stop/
+
+
+:3DTEST:
+fix/ log = 2
+FIX/ FICHIER = %PROG%\OGLTEST.EXE
+EXE/ KRNL\NUL_0\DOS.CPC

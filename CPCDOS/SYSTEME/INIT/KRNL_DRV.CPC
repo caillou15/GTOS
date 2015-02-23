@@ -1,0 +1,18 @@
+rem/ Installation des pilotes
+
+:_INSTALL:
+
+rem/ Fixation de la variable
+fix/ PILOTES = ..\PILOTES\DOS
+
+txt/ Installation du gestionnaire de memoire XMS
+rem/ sys/ /DEVICE %PILOTES%\HIMEM.SYS
+
+txt/ Installation du pilote FAT32
+rem/ sys/ /DEVICE %PILOTES%\DRFAT32.SYS
+
+txt/ Installation du pilote souris
+shell/ ctmouse
+
+txt/ Configuration du clavier en FR
+shell/ keyb fr

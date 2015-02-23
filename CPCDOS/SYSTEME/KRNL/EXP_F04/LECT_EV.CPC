@@ -1,0 +1,5 @@
+#EV.DISPONIBLE(CLIC)
+REM/ Si l'utilisateur clique sur l'image du lecteur
+PROC/ EXP_LECTEUR(CLIC)
+	FIX/ EXP_CIBLE = :
+FIN/ PROC

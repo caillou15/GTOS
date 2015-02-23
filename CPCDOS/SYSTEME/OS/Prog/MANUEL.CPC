@@ -1,0 +1,27 @@
+
+
+ini/ fenetre(
+	ini;nom = "FENETRE_1"
+	ini;texte = "Ma petite fenetre !"
+	ini;type = "1"
+	ini;couleur = "087,215,186"
+	ini;tx = "300"
+	ini;ty = "250"
+	ini;px = "MX"
+	ini;py = "MY"
+	Creer/
+ini/ fenetre)
+
+ini/ textebox(
+	ini;nom = "MON_TEXTEBOX"
+	ini;fenetre = "FENETRE_1"
+	ini;type = "B1"
+	ini;couleurf = "255,255,255"
+	ini;couleurp = "000,000,000"
+	ini;texte = "Mon textebox !"
+	ini;px = "20"
+	ini;py = "20"
+	ini;tx = "210"
+	ini;ty = "17"
+	creer/
+ini/ textebox)

@@ -1,0 +1,31 @@
+rem/ Microsf01 Cpcdos OS2
+rem/ Indexeur de l'initialisation.
+rem/ Les commandes comme pause ne servent qu'a mettre en pause le systeme et voir ce qui defile a l'ecran, pour vous..
+fix/ log = 0
+fix/ DEBUG = 1
+fix/ STOP_ERREUR = 0
+fix/ BOOTOS = OS\INDEX.CPC /l:Autoexec
+
+Rem/ Si INIT_AFFICHAGE = 1 alors il initialisera la liste des affichages 16, 24 et 32bits dans ces tableaux
+rem/ %RESOLUTIONS_16(x)%       %RESOLUTIONS_16% = Nombre resolutions 16bits
+rem/ %RESOLUTIONS_24(x)%       %RESOLUTIONS_24% = Nombre resolutions 24bits
+rem/ %RESOLUTIONS_32(x)%       %RESOLUTIONS_32% = Nombre resolutions 32bits
+Rem/ Si INIT_AFFICHAGE = 0 alors il ne le fera pas, et chargement et plus rapide !
+
+fix/ INIT_AFFICHAGE = 1
+
+
+EXE/ & INIT\KRNL_DEM.CPC
+
+:_KRNL_CFG:
+exe/ & INIT\KRNL_CFG.CPC /l:_CFG
+
+:_KRNL_INI:
+fix/ STOP_ERREUR = 1
+exe/ & INIT\KRNL_INI.CPC /l:_INI_1
+
+:_OS:
+Txt/ /debug Kernel : Execution du serveur d'hebergement des services locaux...
+EXE/ & KRNL\SRV_SVC.CPC
+
+demarrer/

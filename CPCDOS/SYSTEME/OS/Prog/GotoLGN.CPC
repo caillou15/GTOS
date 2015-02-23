@@ -1,0 +1,7 @@
+REM/ Execution du fichier a la ligne 5
+exe/ OS\PROG\GOTOLGN.CPC /l:#5
+txt/ TExTe 1
+txt/ TEXTE 2
+txt/ texte 3
+txt/ tExTe 4
+

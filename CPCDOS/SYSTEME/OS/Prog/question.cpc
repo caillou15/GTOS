@@ -1,0 +1,39 @@
+fix/ debug = 0
+SI/ %LC_IUG_SOURCE% = OK (:
+	FIX/ LC_IUG_SOURCE = 0
+SINON/
+	FIX/ LC_IUG_SOURCE = %EXE_EN_COURS%
+	EXE/ KRNL\LC_IUG\LC_IUG.CPC
+FIN/ SI
+:debut:
+
+cls/
+txt/
+txt/ Quelle est votre nom ?
+fix/ /q NOM
+txt/ Bonjour %NOM% quelle age avez-vous ?
+Fix/ /q AGE
+si/ %AGE% > 17 (:txt/ Vous etes majeur %nom% !:)
+si/ %age% < 18 (:txt/ Vous etes encore jeune %nom%:)
+txt/
+txt/ Petite surprise ? Appuie sur une touche !
+txt/
+pause/
+fix/ NOM = /c MAJ > %NOM%
+txt/ Votre nom en majuscules : %NOM%
+fix/ NOM = /c MIN > %NOM%
+txt/ Votre nom en minuscules : %NOM%
+fix/ HEX_AGE = /c HEX > %AGE%
+txt/ Votre age en Hexadecimale : %HEX_AGE%
+txt/
+txt/ Vous voulez recommencer ? (1=Oui/2=Non)
+:debtouche:
+fix/ touche = 0
+touche/ /p touche
+si/ %touche% = 1 (:aller/ debut:)
+si/ %touche% = 2 (:aller/ fin:)
+aller/ debtouche
+
+:fin:
+txt/ Aurevoir %NOM% !
+stop/

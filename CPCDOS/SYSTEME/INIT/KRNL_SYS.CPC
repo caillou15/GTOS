@@ -1,0 +1,242 @@
+﻿Rem/ Microsf01 Cpcdos OS2.0.1
+rem/ Fichier d'initialisation du Systeme
+rem/ Ne pas modifier , veuillez consulter le manuel du Kernel avant toute modifications.
+
+:_SYS:
+txt/ /debug > Test du systeme
+exe/ INIT\KRNL_INI.CPC /l:_KRNL_SYS1
+:_AFFICHAGE:
+txt/ /debug > Test du VESA ...
+@#VESA_TEST sys/ /testvesa
+FIX/ BAR_PROGRESSION = 2
+FIX/ TEST = /C INS>%VESA_TEST%;Vesa sup
+SI/ %VESA_TEST% > 0 (:
+	FIX/ VESA_TEST = 1
+	TXT/ /DEBUG Kernel : Support VESA OK
+SINON/
+	FIX/ VESA_TEST = 0
+	Txt/ /debug ÿAVERTISSEMENT : Pas de support Vesa
+FIN/ SI
+FIX/ BAR_PROGRESSION = 3
+txt/ /debug > Test des modes d'ecran
+sys/ /testecr 8
+@#LISTE_RES_16 sys/ /testecr 16
+@#LISTE_RES_24 sys/ /testecr 24
+@#LISTE_RES_32 sys/ /testecr 32
+
+SI/ %INIT_AFFICHAGE% = 0 (:
+	STOP/
+FIN/ SI
+FIX/ BAR_PROGRESSION = 4
+Rem/ Nombre de resolutions :
+FIX/ NOMBRE_RES = 33
+FIX/ INDEX_16 = 0
+FIX/ INDEX_24 = 0
+FIX/ INDEX_32 = 0
+REM/ RES = 6 ceci permet de sauter les 6 premières resolution
+FIX/ RES = 6
+FIX/ ADEBUG = 0
+SI/ %DEBUG% = 1 (:FIX/ ADEBUG = 1:)
+fix/ debug = 0
+FIX/ ACONSMENU = 0
+SI/ %CONSMENU% = 1 (:FIX/ ACONSMENU = 1:)
+FIX/ NOMBRE_RES = /C %NOMBRE_RES% - 1
+Txt/ 
+POSY/ /C %CURPOSY% - 1
+Txt/ /DEBUG Kernel : Initialisation de l'affichage veuillez patienter...
+fix/ CONSMENU = 0
+txt/ 
+FIX/ BAR_PROGRESSION = 5
+
+:_BOUCLE_RES:
+	FIX/ RES = /C %RES% + 1
+	POSY/ /C %CURPOSY% - 1
+	
+	FIX/ BAR_PROGRESSION = %BAR_PROGRESSION% + 1
+	
+	SI/ %RES% > 32 (:ALLER/ FIN_LIST_RES:)
+	TXT/ Etape %RES%/%NOMBRE_RES%
+	FIX/ RESOLUTION = 0
+	SI/ %RES% = 1 (:
+		FIX/ RESOLUTION = 320x200
+		ALLER/ TESTER_RES
+	FIN/ SI
+	SI/ %RES% = 2 (:
+		FIX/ RESOLUTION = 320x240
+		ALLER/ TESTER_RES
+	FIN/ SI
+	SI/ %RES% = 3 (:
+		FIX/ RESOLUTION = 320x400
+		ALLER/ TESTER_RES
+	FIN/ SI
+	SI/ %RES% = 4 (:
+		FIX/ RESOLUTION = 320x480
+		ALLER/ TESTER_RES
+	FIN/ SI
+	SI/ %RES% = 5 (:
+		FIX/ RESOLUTION = 400x300
+		ALLER/ TESTER_RES
+	FIN/ SI
+	SI/ %RES% = 6 (:
+		FIX/ RESOLUTION = 512x384
+		ALLER/ TESTER_RES
+	FIN/ SI
+	SI/ %RES% = 7 (:
+		FIX/ RESOLUTION = 640x350
+		ALLER/ TESTER_RES
+	FIN/ SI
+	SI/ %RES% = 8 (:
+		FIX/ RESOLUTION = 640x400
+		ALLER/ TESTER_RES
+	FIN/ SI
+	SI/ %RES% = 9 (:
+		FIX/ RESOLUTION = 640x480
+		ALLER/ TESTER_RES
+	FIN/ SI
+	SI/ %RES% = 10 (:
+		FIX/ RESOLUTION = 640x640
+		ALLER/ TESTER_RES
+	FIN/ SI
+	SI/ %RES% = 11 (:
+		FIX/ RESOLUTION = 848x480
+		ALLER/ TESTER_RES
+	FIN/ SI
+	SI/ %RES% = 12 (:
+		FIX/ RESOLUTION = 720x480
+		ALLER/ TESTER_RES
+	FIN/ SI
+	SI/ %RES% = 13 (:
+		FIX/ RESOLUTION = 800x600
+		ALLER/ TESTER_RES
+	FIN/ SI
+	SI/ %RES% = 14 (:
+		FIX/ RESOLUTION = 1024x768
+		ALLER/ TESTER_RES
+	FIN/ SI
+	SI/ %RES% = 15 (:
+		FIX/ RESOLUTION = 1024x600
+		ALLER/ TESTER_RES
+	FIN/ SI
+	SI/ %RES% = 16 (:
+		FIX/ RESOLUTION = 1080x1050
+		ALLER/ TESTER_RES
+	FIN/ SI
+	SI/ %RES% = 17 (:
+		FIX/ RESOLUTION = 1152x864
+		ALLER/ TESTER_RES
+	FIN/ SI
+	SI/ %RES% = 18 (:
+		FIX/ RESOLUTION = 1280x854
+		ALLER/ TESTER_RES
+	FIN/ SI
+	SI/ %RES% = 19 (:
+		FIX/ RESOLUTION = 1280x960
+		ALLER/ TESTER_RES
+	FIN/ SI
+	SI/ %RES% = 20 (:
+		FIX/ RESOLUTION = 1280x1024
+		ALLER/ TESTER_RES
+	FIN/ SI
+	SI/ %RES% = 21 (:
+		FIX/ RESOLUTION = 1280x720
+		ALLER/ TESTER_RES
+	FIN/ SI
+	SI/ %RES% = 22 (:
+		FIX/ RESOLUTION = 1366x768
+		ALLER/ TESTER_RES
+	FIN/ SI
+	SI/ %RES% = 23 (:
+		FIX/ RESOLUTION = 1400x1050
+		ALLER/ TESTER_RES
+	FIN/ SI
+	SI/ %RES% = 24 (:
+		FIX/ RESOLUTION = 1440x900
+		ALLER/ TESTER_RES
+	FIN/ SI
+	SI/ %RES% = 25 (:
+		FIX/ RESOLUTION = 1440x960
+		ALLER/ TESTER_RES
+	FIN/ SI
+	SI/ %RES% = 26 (:
+		FIX/ RESOLUTION = 1440x960
+		ALLER/ TESTER_RES
+	FIN/ SI
+	SI/ %RES% = 27 (:
+		FIX/ RESOLUTION = 1600x900
+		ALLER/ TESTER_RES
+	FIN/ SI
+	SI/ %RES% = 28 (:
+		FIX/ RESOLUTION = 1600x1200
+		ALLER/ TESTER_RES
+	FIN/ SI
+	SI/ %RES% = 29 (:
+		FIX/ RESOLUTION = 1920x1080
+		ALLER/ TESTER_RES
+	FIN/ SI
+	SI/ %RES% = 30 (:
+		FIX/ RESOLUTION = 1920x1200
+		ALLER/ TESTER_RES
+	FIN/ SI
+	SI/ %RES% = 31 (:
+		FIX/ RESOLUTION = 1920x1440
+		ALLER/ TESTER_RES
+	FIN/ SI
+	SI/ %RES% = 32 (:
+		FIX/ RESOLUTION = 1680x1050
+		ALLER/ TESTER_RES
+	FIN/ SI
+	SI/ %RES% = 33 (:
+		FIX/ RESOLUTION = 2048x1536
+		ALLER/ TESTER_RES
+	FIN/ SI
+:TESTER_RES:
+	FIX/ TEST_16 = 0
+	FIX/ TEST_24 = 0
+	FIX/ TEST_32 = 0
+	FIX/ TEST_16 = /C INS >%LISTE_RES_16%;%RESOLUTION%
+	FIX/ TEST_24 = /C INS >%LISTE_RES_24%;%RESOLUTION%
+	FIX/ TEST_32 = /C INS >%LISTE_RES_32%;%RESOLUTION%
+	SI/ %TEST_16% > 0 (:
+		FIX/ INDEX_16 = /C %INDEX_16% + 1
+		FIX/ RESOLUTIONS_16(%INDEX_16%) = %RESOLUTION%
+		FIX/ RESOLUTIONS_16 = %INDEX_16%
+	FIN/ SI
+	SI/ %TEST_24% > 0 (:
+		FIX/ INDEX_24 = /C %INDEX_24% + 1
+		FIX/ RESOLUTIONS_24(%INDEX_24%) = %RESOLUTION%
+		FIX/ RESOLUTIONS_24 = %INDEX_24%
+	FIN/ SI
+	SI/ %TEST_32% > 0 (:
+		FIX/ INDEX_32 = /C %INDEX_32% + 1
+		FIX/ RESOLUTIONS_32(%INDEX_32%) = %RESOLUTION%
+		FIX/ RESOLUTIONS_32 = %INDEX_32%
+	FIN/ SI
+	SI/ %RESOLUTION% = 0 (:ALLER/ RETOUR_RES:)
+	ALLER/ _BOUCLE_RES
+:FIN_LIST_RES:
+Txt/ Kernel : Operation terminee
+SI/ %ADEBUG% = 1 (:
+	FIX/ /S ADEBUG
+	FIX/ DEBUG = 1
+FIN/ SI
+SI/ %ACONSMENU% = 1 (:
+	FIX/ /S ACONSMENU
+	FIX/ CONSMENU = 1
+FIN/ SI
+FIX/ /S TEST_16
+FIX/ /S TEST_24
+FIX/ /S TEST_32
+FIX/ /S RESOLUTION
+FIX/ /S RES
+exe/ INIT\KRNL_INI.CPC /l:_KRNL_SYS2
+:_SYSTEST:
+txt/ /debug - Teste de performance...
+sys/ /test
+exe/ INIT\KRNL_INI.CPC /l:_KRNL_SYS3
+:_MEMTEST:
+txt/ /debug  - Teste de la memoire...
+sys/ /memtest
+:_MEMCLEAR:
+txt/ /debug  - Nettoyage de la memoire...
+sys/ /memclear
+exe/ INIT\KRNL_INI.CPC /l:_FIN_INI_1

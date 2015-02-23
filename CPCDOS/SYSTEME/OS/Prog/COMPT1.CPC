@@ -1,0 +1,70 @@
+fix/ debug = 0
+
+ini/ fenetre(
+        ini;nom = "FCOMPT"
+        ini;texte = "Compteur V1"
+        ini;type = "1;C1"
+        ini;couleur = "087,215,186"
+        ini;tx = "400"
+        ini;ty = "350"
+        ini;px = "MX"
+        ini;py = "MY"
+        creer/
+ini/ fenetre)
+
+ini/ bouton(
+        ini;nom = "BOUTONC1"
+        ini;fenetre = "FCOMPT"
+        ini;texte = "Clique ICI"
+        ini;img = "7"
+        ini;couleurf = "255,255,255"
+        ini;couleurp = "255,000,000"
+        ini;tx = "180"
+        ini;ty = "30"
+        ini;px = "10"
+        ini;py = "10"
+        creer/
+	ev/ %PROG%\COMPT1EV.CPC
+ini/ bouton)
+ini/ bouton(
+        ini;nom = "BOUTONC2"
+        ini;fenetre = "FCOMPT"
+        ini;texte = "OU ICI"
+        ini;img = "3"
+        ini;couleurf = "255,255,255"
+        ini;couleurp = "255,000,000"
+        ini;tx = "180"
+        ini;ty = "30"
+        ini;px = "20"
+        ini;py = "100"
+        creer/
+	ev/ %PROG%\COMPT1EV.CPC
+ini/ bouton)
+ini/ label(
+	ini;fenetre = "FCOMPT"
+	ini;nom = "LABELC1"
+	ini;texte = "0"
+ 	ini;couleurf = "200,200,200"
+ 	ini;couleurp = "000,000,000"
+ 	ini;transparent = "0"
+ 	ini;type = "2"
+	ini;tx = "200"
+	ini;ty = "20"
+	ini;px = "220"
+	ini;py = "10"
+	Creer/
+ini/ label)
+ini/ label(
+	ini;fenetre = "FCOMPT"
+	ini;nom = "LABELC2"
+	ini;texte = "0"
+ 	ini;couleurf = "250,250,250"
+ 	ini;couleurp = "255,000,000"
+ 	ini;transparent = "0"
+ 	ini;type = "2"
+	ini;tx = "200"
+	ini;ty = "20"
+	ini;px = "220"
+	ini;py = "50"
+	Creer/
+ini/ label)
