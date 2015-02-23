@@ -1,0 +1,39 @@
+rem/ Fichier d'evenements CpcdosC+ de la fenetre TESTE :)
+
+rem/ Si l'utilisateur clique sur le bouton "ceci est un bouton" :
+
+
+PROC/ Bouton1_F4(CLIC)
+	Fix/ NBIMG2 = /c %NBIMG2% + 1
+	ini/ bouton(
+		ini;nom = "Bouton1_F4"
+		ini;fenetre = "FENETRE_4"
+		ini;texte = "T'a cliqué %NBIMG2% fois"
+		ini;type = "0"
+		ini;img = "%NBIMG%"
+		ini;couleurf = "255,255,255"
+		ini;couleurp = "255,000,000"
+		ini;tx = "180"
+		ini;ty = "30"
+		ini;px = "10"
+		ini;py = "100"
+		creer/
+	ini/ bouton)
+FIN/ PROC
+PROC/ Bouton2_F4(CLIC)
+	Fix/ NBIMG2 = 0
+	ini/ bouton(
+		ini;nom = "Bouton1_F4"
+		ini;fenetre = "FENETRE_4"
+		ini;texte = "T'a cliqué %NBIMG2% fois"
+		ini;type = "0"
+		ini;img = "%NBIMG%"
+		ini;couleurf = "255,255,255"
+		ini;couleurp = "255,000,000"
+		ini;tx = "180"
+		ini;ty = "30"
+		ini;px = "10"
+		ini;py = "100"
+		creer/
+	ini/ bouton)
+FIN/ PROC

@@ -1,0 +1,416 @@
+rem/ Calculatrice CraftyOS
+rem/ Compatible OS2.0.5 A1.2.1 ou plus
+rem/ 09/06/2013
+rem/ FAVIER Sébastien 01
+
+fix/ CALC_NB(1) = 0
+fix/ CALC_NB(2) = 0
+
+rem/ ======================================================
+rem/ ================ INTERFACE GRAPHIQUE =================
+rem/ ======================================================
+
+ini/ fenetre(
+        ini;nom = "PROG_CALC"
+        ini;texte = "Calculatrice"
+        ini;type = "1;C2"
+	ini;image = "%PROG%\CALC\ICO_CALC.BMP"
+        ini;couleur = "215,230,240"
+        ini;tx = "360"
+        ini;ty = "235"
+        ini;px = "MX"
+        ini;py = "MY"
+        creer/
+	ev/ %PROG%\CALC\CALC_EV.CPC
+ini/ fenetre)
+
+
+ini/ label(
+	ini;fenetre = "PROG_CALC"
+	ini;nom = "CALC_TXT"
+	ini;couleurf = "255,255,255"
+	ini;couleurp = "000,000,000"
+	ini;texte = "0"
+	ini;type = "1"
+	ini;tx = "300"
+	ini;ty = "12"
+	ini;px = "10"
+	ini;py = "10"
+	creer/
+ini/ label)
+
+ini/ bouton(
+        ini;nom = "CALC_NB1"
+        ini;fenetre = "PROG_CALC"
+        ini;texte = "1"
+        ini;img = "0"
+        ini;couleurf = "230,230,255"
+        ini;couleurp = "255,000,000"
+        ini;tx = "40"
+        ini;ty = "30"
+        ini;px = "10"
+        ini;py = "40"
+        creer/
+	ev/ %PROG%\CALC\CALC_EV.CPC
+ini/ bouton)
+
+ini/ bouton(
+        ini;nom = "CALC_NB2"
+        ini;fenetre = "PROG_CALC"
+        ini;texte = "2"
+        ini;img = "0"
+        ini;couleurf = "230,230,255"
+        ini;couleurp = "255,000,000"
+        ini;tx = "40"
+        ini;ty = "30"
+        ini;px = "60"
+        ini;py = "40"
+        creer/
+	ev/ %PROG%\CALC\CALC_EV.CPC
+ini/ bouton)
+
+ini/ bouton(
+        ini;nom = "CALC_NB3"
+        ini;fenetre = "PROG_CALC"
+        ini;texte = "3"
+        ini;img = "0"
+        ini;couleurf = "230,230,255"
+        ini;couleurp = "255,000,000"
+        ini;tx = "40"
+        ini;ty = "30"
+        ini;px = "110"
+        ini;py = "40"
+        creer/
+	ev/ %PROG%\CALC\CALC_EV.CPC
+ini/ bouton)
+
+ini/ bouton(
+        ini;nom = "CALC_NB4"
+        ini;fenetre = "PROG_CALC"
+        ini;texte = "4"
+        ini;img = "0"
+        ini;couleurf = "230,230,255"
+        ini;couleurp = "255,000,000"
+        ini;tx = "40"
+        ini;ty = "30"
+        ini;px = "10"
+        ini;py = "80"
+        creer/
+	ev/ %PROG%\CALC\CALC_EV.CPC
+ini/ bouton)
+
+ini/ bouton(
+        ini;nom = "CALC_NB5"
+        ini;fenetre = "PROG_CALC"
+        ini;texte = "5"
+        ini;img = "0"
+        ini;couleurf = "230,230,255"
+        ini;couleurp = "255,000,000"
+        ini;tx = "40"
+        ini;ty = "30"
+        ini;px = "60"
+        ini;py = "80"
+        creer/
+	ev/ %PROG%\CALC\CALC_EV.CPC
+ini/ bouton)
+
+ini/ bouton(
+        ini;nom = "CALC_NB6"
+        ini;fenetre = "PROG_CALC"
+        ini;texte = "6"
+        ini;img = "0"
+        ini;couleurf = "230,230,255"
+        ini;couleurp = "255,000,000"
+        ini;tx = "40"
+        ini;ty = "30"
+        ini;px = "110"
+        ini;py = "80"
+        creer/
+	ev/ %PROG%\CALC\CALC_EV.CPC
+ini/ bouton)
+
+ini/ bouton(
+        ini;nom = "CALC_NB7"
+        ini;fenetre = "PROG_CALC"
+        ini;texte = "7"
+        ini;img = "0"
+        ini;couleurf = "230,230,255"
+        ini;couleurp = "255,000,000"
+        ini;tx = "40"
+        ini;ty = "30"
+        ini;px = "10"
+        ini;py = "120"
+        creer/
+	ev/ %PROG%\CALC\CALC_EV.CPC
+ini/ bouton)
+
+ini/ bouton(
+        ini;nom = "CALC_NB8"
+        ini;fenetre = "PROG_CALC"
+        ini;texte = "8"
+        ini;img = "0"
+        ini;couleurf = "230,230,255"
+        ini;couleurp = "255,000,000"
+        ini;tx = "40"
+        ini;ty = "30"
+        ini;px = "60"
+        ini;py = "120"
+        creer/
+	ev/ %PROG%\CALC\CALC_EV.CPC
+ini/ bouton)
+
+ini/ bouton(
+        ini;nom = "CALC_NB9"
+        ini;fenetre = "PROG_CALC"
+        ini;texte = "9"
+        ini;img = "0"
+        ini;couleurf = "230,230,255"
+        ini;couleurp = "255,000,000"
+        ini;tx = "40"
+        ini;ty = "30"
+        ini;px = "110"
+        ini;py = "120"
+        creer/
+	ev/ %PROG%\CALC\CALC_EV.CPC
+ini/ bouton)
+
+ini/ bouton(
+        ini;nom = "CALC_NBP"
+        ini;fenetre = "PROG_CALC"
+        ini;texte = "."
+        ini;img = "0"
+        ini;couleurf = "230,230,255"
+        ini;couleurp = "255,000,000"
+        ini;tx = "40"
+        ini;ty = "30"
+        ini;px = "10"
+        ini;py = "160"
+        creer/
+	ev/ %PROG%\CALC\CALC_EV.CPC
+ini/ bouton)
+
+ini/ bouton(
+        ini;nom = "CALC_NB0"
+        ini;fenetre = "PROG_CALC"
+        ini;texte = "0"
+        ini;img = "0"
+        ini;couleurf = "230,230,255"
+        ini;couleurp = "255,000,000"
+        ini;tx = "40"
+        ini;ty = "30"
+        ini;px = "60"
+        ini;py = "160"
+        creer/
+	ev/ %PROG%\CALC\CALC_EV.CPC
+ini/ bouton)
+
+ini/ bouton(
+        ini;nom = "CALC_EG"
+        ini;fenetre = "PROG_CALC"
+        ini;texte = "="
+        ini;img = "0"
+        ini;couleurf = "220,255,220"
+        ini;couleurp = "255,000,000"
+        ini;tx = "40"
+        ini;ty = "30"
+        ini;px = "110"
+        ini;py = "160"
+        creer/
+	ev/ %PROG%\CALC\CALC_EV.CPC
+ini/ bouton)
+
+ini/ bouton(
+        ini;nom = "CALC_CL"
+        ini;fenetre = "PROG_CALC"
+        ini;texte = "C"
+        ini;img = "0"
+        ini;couleurf = "220,255,220"
+        ini;couleurp = "255,000,000"
+        ini;tx = "40"
+        ini;ty = "30"
+        ini;px = "160"
+        ini;py = "40"
+        creer/
+	ev/ %PROG%\CALC\CALC_EV.CPC
+ini/ bouton)
+
+ini/ bouton(
+        ini;nom = "CALC_PLUS"
+        ini;fenetre = "PROG_CALC"
+        ini;texte = "+"
+        ini;img = "0"
+        ini;couleurf = "255,255,155"
+        ini;couleurp = "255,000,000"
+        ini;tx = "40"
+        ini;ty = "30"
+        ini;px = "210"
+        ini;py = "40"
+        creer/
+	ev/ %PROG%\CALC\CALC_EV.CPC
+ini/ bouton)
+
+ini/ bouton(
+        ini;nom = "CALC_MOINS"
+        ini;fenetre = "PROG_CALC"
+        ini;texte = "-"
+        ini;img = "0"
+        ini;couleurf = "255,255,155"
+        ini;couleurp = "255,000,000"
+        ini;tx = "40"
+        ini;ty = "30"
+        ini;px = "260"
+        ini;py = "40"
+        creer/
+	ev/ %PROG%\CALC\CALC_EV.CPC
+ini/ bouton)
+
+ini/ bouton(
+        ini;nom = "CALC_DIVIS"
+        ini;fenetre = "PROG_CALC"
+        ini;texte = "/"
+        ini;img = "0"
+        ini;couleurf = "255,255,155"
+        ini;couleurp = "255,000,000"
+        ini;tx = "40"
+        ini;ty = "30"
+        ini;px = "310"
+        ini;py = "40"
+        creer/
+	ev/ %PROG%\CALC\CALC_EV.CPC
+ini/ bouton)
+
+ini/ bouton(
+        ini;nom = "CALC_MULTI"
+        ini;fenetre = "PROG_CALC"
+        ini;texte = "x"
+        ini;img = "0"
+        ini;couleurf = "255,255,155"
+        ini;couleurp = "255,000,000"
+        ini;tx = "40"
+        ini;ty = "30"
+        ini;px = "210"
+        ini;py = "80"
+        creer/
+	ev/ %PROG%\CALC\CALC_EV.CPC
+ini/ bouton)
+
+ini/ bouton(
+        ini;nom = "CALC_SQR"
+        ini;fenetre = "PROG_CALC"
+        ini;texte = "SQR"
+        ini;img = "0"
+        ini;couleurf = "255,255,155"
+        ini;couleurp = "255,000,000"
+        ini;tx = "40"
+        ini;ty = "30"
+        ini;px = "310"
+        ini;py = "160"
+        creer/
+	ev/ %PROG%\CALC\CALC_EV.CPC
+ini/ bouton)
+
+ini/ bouton(
+        ini;nom = "CALC_COS"
+        ini;fenetre = "PROG_CALC"
+        ini;texte = "COS"
+        ini;img = "0"
+        ini;couleurf = "255,255,155"
+        ini;couleurp = "255,000,000"
+        ini;tx = "40"
+        ini;ty = "30"
+        ini;px = "260"
+        ini;py = "80"
+        creer/
+	ev/ %PROG%\CALC\CALC_EV.CPC
+ini/ bouton)
+
+ini/ bouton(
+        ini;nom = "CALC_SIN"
+        ini;fenetre = "PROG_CALC"
+        ini;texte = "SIN"
+        ini;img = "0"
+        ini;couleurf = "255,255,155"
+        ini;couleurp = "255,000,000"
+        ini;tx = "40"
+        ini;ty = "30"
+        ini;px = "310"
+        ini;py = "80"
+        creer/
+	ev/ %PROG%\CALC\CALC_EV.CPC
+ini/ bouton)
+
+ini/ bouton(
+        ini;nom = "CALC_TAN"
+        ini;fenetre = "PROG_CALC"
+        ini;texte = "TAN"
+        ini;img = "0"
+        ini;couleurf = "255,255,155"
+        ini;couleurp = "255,000,000"
+        ini;tx = "40"
+        ini;ty = "30"
+        ini;px = "210"
+        ini;py = "120"
+        creer/
+	ev/ %PROG%\CALC\CALC_EV.CPC
+ini/ bouton)
+
+ini/ bouton(
+        ini;nom = "CALC_ATN"
+        ini;fenetre = "PROG_CALC"
+        ini;texte = "ATN"
+        ini;img = "0"
+        ini;couleurf = "255,255,155"
+        ini;couleurp = "255,000,000"
+        ini;tx = "40"
+        ini;ty = "30"
+        ini;px = "260"
+        ini;py = "120"
+        creer/
+	ev/ %PROG%\CALC\CALC_EV.CPC
+ini/ bouton)
+
+ini/ bouton(
+        ini;nom = "CALC_LOG"
+        ini;fenetre = "PROG_CALC"
+        ini;texte = "LOG"
+        ini;img = "0"
+        ini;couleurf = "255,255,155"
+        ini;couleurp = "255,000,000"
+        ini;tx = "40"
+        ini;ty = "30"
+        ini;px = "310"
+        ini;py = "120"
+        creer/
+	ev/ %PROG%\CALC\CALC_EV.CPC
+ini/ bouton)
+
+ini/ bouton(
+        ini;nom = "CALC_HEX"
+        ini;fenetre = "PROG_CALC"
+        ini;texte = "HEX"
+        ini;img = "0"
+        ini;couleurf = "255,255,155"
+        ini;couleurp = "255,000,000"
+        ini;tx = "40"
+        ini;ty = "30"
+        ini;px = "210"
+        ini;py = "160"
+        creer/
+	ev/ %PROG%\CALC\CALC_EV.CPC
+ini/ bouton)
+
+ini/ bouton(
+        ini;nom = "CALC_CHR"
+        ini;fenetre = "PROG_CALC"
+        ini;texte = "CHR"
+        ini;img = "0"
+        ini;couleurf = "255,255,155"
+        ini;couleurp = "255,000,000"
+        ini;tx = "40"
+        ini;ty = "30"
+        ini;px = "260"
+        ini;py = "160"
+        creer/
+	ev/ %PROG%\CALC\CALC_EV.CPC
+ini/ bouton)
+

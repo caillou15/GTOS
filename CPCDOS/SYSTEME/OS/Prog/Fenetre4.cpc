@@ -1,0 +1,50 @@
+rem/ cet ordinateur est merdique LOL !
+rem/ Bref
+
+
+ini/ fenetre(
+        ini;nom = "FENETRE_4"
+        ini;texte = "Ma f'netre prioritaire !"
+        ini;type = "1;FP1"
+        ini;couleur = "187,250,206"
+        ini;tx = "300"
+        ini;ty = "250"
+        ini;px = "500"
+        ini;py = "200"
+        creer/
+ini/ fenetre)
+
+rem/ un bouton
+ini/ bouton(
+        ini;nom = "BOUTON1_F4"
+        ini;fenetre = "FENETRE_4"
+        ini;texte = "Clique moi !"
+        ini;img = "5"
+        ini;couleurf = "255,255,255"
+        ini;couleurp = "255,000,000"
+        ini;tx = "180"
+        ini;ty = "30"
+        ini;px = "10"
+        ini;py = "100"
+        creer/
+	ev/ OS\PROG\EV4.CPC
+ini/ bouton)
+
+rem/ un bouton
+ini/ bouton(
+        ini;nom = "BOUTON2_F4"
+        ini;fenetre = "FENETRE_4"
+        ini;texte = "RESET"
+        ini;img = "1"
+        ini;couleurf = "255,255,255"
+        ini;couleurp = "255,000,000"
+        ini;tx = "100"
+        ini;ty = "30"
+        ini;px = "10"
+        ini;py = "10"
+        creer/
+	ev/ OS\PROG\EV4.CPC
+ini/ bouton)
+
+Fix/ NBIMG2 = 0
+

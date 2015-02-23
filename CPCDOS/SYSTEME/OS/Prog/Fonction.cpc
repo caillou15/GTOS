@@ -1,0 +1,25 @@
+fix/ debug = 0
+txt/ Appuie sur une touche pour continuer sur chaque phases !
+Pause/
+txt/ Ecrit une phase perso (sans virgules ni 2 points)
+fix/ /Q Phrase
+txt/ En majuscules sa donne /c MAJ >%Phrase%
+txt/ En minuscules sa donne /c MIN >%Phrase%
+Pause/
+fix/ Taille = /c LEN >%Phrase%
+txt/ Dans cette phase il y a %TAILLE% caracteres
+txt/ Si on converti %TAILLE% en Hexadecimale sa donne /c HEX >%TAILLE%
+Pause/
+fix/ resultat = /c %TAILLE% * 2
+txt/ %TAILLE% multipliee par 2 donne %resultat%
+Pause/
+fix/ resultat2 = /c %taille% * %RND%
+txt/ Et ce dernier fois un nombre au hazard donne %resultat2%
+fix/ resultat2 = /c %resultat2% + 5.20
+txt/ Plus 5.20 donne %resultat2%
+Pause/
+txt/ Puis si on arrondi cette valeur cela donne /c INT >%resultat2%
+txt/ Cette valeur en caractere ASCII donne /c CHR >%resultat2%
+txt/ Travaille terminee Aurevoir !
+Pause/
+stop/

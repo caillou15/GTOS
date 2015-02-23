@@ -1,0 +1,291 @@
+
+ini/ fenetre(
+	ini;nom = "FENETRE_LANCEUR"	
+	ini;texte = "Lanceur de programmes TEST CpcdosC+ (source:OS\Prog\lanceur.cpc)"
+	ini;type = "1;C1"
+	ini;couleur = "087,215,186"
+	ini;px = "MX"
+	ini;py = "MY"
+	ini;tx = "600"
+	ini;ty = "300"
+	Creer/
+ini/ fenetre)
+
+ini/ bouton(
+        ini;nom = "BOUTON_1"
+        ini;fenetre = "FENETRE_LANCEUR"
+        ini;texte = "Fenetre test"
+        ini;img = "1"
+	ini;type = "A1"
+        ini;couleurf = "255,255,255"
+        ini;couleurp = "255,000,100"
+        ini;tx = "180"
+        ini;ty = "30"
+        ini;px = "10"
+        ini;py = "10"
+        creer/
+	ev/ %EXE_EN_COURS%
+ini/ bouton)
+
+ini/ bouton(
+        ini;nom = "BOUTON_2"
+        ini;fenetre = "FENETRE_LANCEUR"
+        ini;texte = "PNG test"
+        ini;img = "2"
+	ini;type = "A1"
+        ini;couleurf = "255,255,255"
+        ini;couleurp = "255,000,100"
+        ini;tx = "180"
+        ini;ty = "30"
+        ini;px = "30"
+        ini;py = "200"
+        creer/
+	ev/ %EXE_EN_COURS%
+ini/ bouton)
+
+
+ini/ bouton(
+        ini;nom = "BOUTON_3"
+        ini;fenetre = "FENETRE_LANCEUR"
+        ini;texte = "Survole test 1"
+        ini;img = "3"
+	ini;type = "A1"
+        ini;couleurf = "255,255,255"
+        ini;couleurp = "255,000,100"
+        ini;tx = "180"
+        ini;ty = "30"
+        ini;px = "200"
+        ini;py = "50"
+        creer/
+	ev/ %EXE_EN_COURS%
+ini/ bouton)
+
+ini/ bouton(
+        ini;nom = "BOUTON_4"
+        ini;fenetre = "FENETRE_LANCEUR"
+        ini;texte = "Survole test 2"
+        ini;img = "4"
+	ini;type = "A1"
+        ini;couleurf = "255,255,255"
+        ini;couleurp = "255,000,100"
+        ini;tx = "180"
+        ini;ty = "30"
+        ini;px = "150"
+        ini;py = "170"
+        creer/
+	ev/ %EXE_EN_COURS%
+ini/ bouton)
+
+ini/ bouton(
+        ini;nom = "BOUTON_5"
+        ini;fenetre = "FENETRE_LANCEUR"
+        ini;texte = "Survole test 3"
+        ini;img = "5"
+	ini;type = "A1"
+        ini;couleurf = "255,255,255"
+        ini;couleurp = "255,000,100"
+        ini;tx = "180"
+        ini;ty = "30"
+        ini;px = "100"
+        ini;py = "85"
+        creer/
+	ev/ %EXE_EN_COURS%
+ini/ bouton)
+
+ini/ bouton(
+        ini;nom = "BOUTON_6"
+        ini;fenetre = "FENETRE_LANCEUR"
+        ini;texte = "Souris"
+        ini;img = "6"
+	ini;type = "A1"
+        ini;couleurf = "255,255,255"
+        ini;couleurp = "255,000,100"
+        ini;tx = "180"
+        ini;ty = "30"
+        ini;px = "40"
+        ini;py = "140"
+        creer/
+	ev/ %EXE_EN_COURS%
+ini/ bouton)
+
+ini/ bouton(
+        ini;nom = "BOUTON_7"
+        ini;fenetre = "FENETRE_LANCEUR"
+        ini;texte = "Exploreur"
+        ini;img = "7"
+	ini;type = "A1"
+        ini;couleurf = "255,255,255"
+        ini;couleurp = "255,000,100"
+        ini;tx = "100"
+        ini;ty = "30"
+        ini;px = "10"
+        ini;py = "240"
+        creer/
+	ev/ %EXE_EN_COURS%
+ini/ bouton)
+
+ini/ bouton(
+        ini;nom = "BOUTON_8"
+        ini;fenetre = "FENETRE_LANCEUR"
+        ini;texte = "Barre progression"
+        ini;img = "2"
+	ini;type = "A1"
+        ini;couleurf = "255,255,255"
+        ini;couleurp = "255,000,100"
+        ini;tx = "180"
+        ini;ty = "30"
+        ini;px = "200"
+        ini;py = "240"
+        creer/
+	ev/ %EXE_EN_COURS%
+ini/ bouton)
+
+ini/ textebox(
+	ini;nom = "MON_TEXTEBOX"
+	ini;fenetre = "FENETRE_LANCEUR"
+	ini;type = "B1"
+	ini;couleurf = "100,100,255"
+	ini;couleurp = "000,000,000"
+	ini;texte = "Entrez du texte !"
+	ini;px = "220"
+	ini;py = "20"
+	ini;tx = "210"
+	ini;ty = "17"
+	creer/
+ini/ textebox)
+
+ini/ bouton(
+        ini;nom = "BOUTON_9"
+        ini;fenetre = "FENETRE_LANCEUR"
+        ini;texte = "OK"
+        ini;img = "0"
+	ini;type = "A1"
+        ini;couleurf = "255,255,255"
+        ini;couleurp = "000,000,100"
+        ini;tx = "50"
+        ini;ty = "18"
+        ini;px = "435"
+        ini;py = "20"
+        creer/
+	ev/ %EXE_EN_COURS%
+ini/ bouton)
+
+ini/ bouton(
+        ini;nom = "BOUTON_10"
+        ini;fenetre = "FENETRE_LANCEUR"
+        ini;texte = "App Java 1" 
+        ini;img = "0"
+	ini;type = "A1"
+        ini;couleurf = "255,255,255"
+        ini;couleurp = "000,000,100"
+        ini;tx = "100"
+        ini;ty = "20"
+        ini;px = "435"
+        ini;py = "50"
+        creer/
+	ev/ %EXE_EN_COURS%
+ini/ bouton)
+
+ini/ bouton(
+        ini;nom = "BOUTON_11"
+        ini;fenetre = "FENETRE_LANCEUR"
+        ini;texte = "App Java 2" 
+        ini;img = "0"
+	ini;type = "A1"
+        ini;couleurf = "255,255,255"
+        ini;couleurp = "000,000,100"
+        ini;tx = "100"
+        ini;ty = "20"
+        ini;px = "435"
+        ini;py = "80"
+        creer/
+	ev/ %EXE_EN_COURS%
+ini/ bouton)
+
+ini/ bouton(
+        ini;nom = "BOUTON_12"
+        ini;fenetre = "FENETRE_LANCEUR"
+        ini;texte = "Redemarrer" 
+        ini;img = "0"
+	ini;type = "A1"
+        ini;couleurf = "050,100,255"
+        ini;couleurp = "000,000,000"
+        ini;tx = "100"
+        ini;ty = "20"
+        ini;px = "435"
+        ini;py = "120"
+        creer/
+	ev/ %EXE_EN_COURS%
+ini/ bouton)
+
+ini/ bouton(
+        ini;nom = "BOUTON_13"
+        ini;fenetre = "FENETRE_LANCEUR"
+        ini;texte = "Arreter"
+        ini;img = "0"
+	ini;type = "A1"
+        ini;couleurf = "050,100,255"
+        ini;couleurp = "000,000,000"
+        ini;tx = "100"
+        ini;ty = "20"
+        ini;px = "435"
+        ini;py = "170"
+        creer/
+	ev/ %EXE_EN_COURS%
+ini/ bouton)
+
+PROC/ BOUTON_1(CLIC)
+	exe/ %prog%\fenetre.cpc
+FIN/ PROC
+
+PROC/ BOUTON_2(CLIC)
+	exe/ %prog%\PNG.cpc
+FIN/ PROC
+
+PROC/ BOUTON_3(CLIC)
+	exe/ %prog%\SURVOLEB.cpc
+FIN/ PROC
+
+PROC/ BOUTON_4(CLIC)
+	exe/ %prog%\SURVOLEL.cpc
+FIN/ PROC
+
+PROC/ BOUTON_5(CLIC)
+	exe/ %prog%\SURVOLEI.cpc
+FIN/ PROC
+
+PROC/ BOUTON_6(CLIC)
+	exe/ %prog%\Souris.cpc
+FIN/ PROC
+
+PROC/ BOUTON_7(CLIC)
+	explorer/
+FIN/ PROC
+
+PROC/ BOUTON_8(CLIC)
+	exe/ %prog%\progress.cpc
+FIN/ PROC
+
+PROC/ BOUTON_9(CLIC)
+	ini/ textebox(
+		ini;nom = "MON_TEXTEBOX"
+		ini;texte = "#%Montexte"
+	ini/ textebox)
+	MSGBOX/ Vous avez ecrit : %monTexte%
+FIN/ PROC
+
+PROC/ BOUTON_10(CLIC)
+	java/ %prog%\java\fenetre.jad
+FIN/ PROC
+
+PROC/ BOUTON_11(CLIC)
+	java/ %prog%\java\ccp.jad
+FIN/ PROC
+
+PROC/ BOUTON_12(CLIC)
+	CPC/ /REDEMARRER
+FIN/ PROC
+
+PROC/ BOUTON_13(CLIC)
+	CPC/ /ARRETER
+FIN/ PROC

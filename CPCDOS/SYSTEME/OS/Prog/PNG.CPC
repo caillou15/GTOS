@@ -1,0 +1,58 @@
+rem/ Exemple d'utilisation d'une imageBox
+rem/ creation d'une fenetre + imagebox.
+
+ini/ fenetre(
+	ini;nom = "FENETRE_PNG"	
+	ini;texte = "Test du premier PNG!"
+	ini;type = "1;AGR1,"
+	ini;couleur = "087,215,186"
+	ini;px = "MX"
+	ini;py = "MY"
+	ini;tx = "600"
+	ini;ty = "400"
+	Creer/
+ini/ fenetre)
+
+
+ini/ imagebox(
+	ini;NOM = "IMG_PNG"
+	ini;fenetre = "FENETRE_PNG"
+	ini;couleur = "000,000,130"
+	ini;couleurf = "000,000,000"
+	ini;type = "0"
+	ini;image = "%PROG%\cpcdos.PNG"
+	ini;px = "40"
+	ini;py = "40"
+	ini;tx = "580"
+	ini;ty = "300"
+	creer/
+ini/ imagebox)
+
+
+ini/ imagebox(
+	ini;NOM = "IMG_PNG3"
+	ini;fenetre = "FENETRE_PNG"
+	ini;couleur = "000,000,130"
+	ini;couleurf = "000,000,000"
+	ini;type = "0"
+	ini;image = "%PROG%\TRANSP.PNG"
+	ini;px = "80"
+	ini;py = "80"
+	ini;tx = "580"
+	ini;ty = "300"
+	creer/
+ini/ imagebox)
+
+ini/ imagebox(
+	ini;NOM = "IMG_PNG2"
+	ini;fenetre = "FENETRE_PNG"
+	ini;couleur = "000,000,130"
+	ini;couleurf = "000,000,000"
+	ini;type = "0"
+	ini;image = "%PROG%\CraftyOS.PNG"
+	ini;px = "120"
+	ini;py = "120"
+	ini;tx = "580"
+	ini;ty = "300"
+	creer/
+ini/ imagebox)

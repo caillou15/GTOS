@@ -1,0 +1,22 @@
+--; Base de registre CPCDOS OS2
+--; MAJ:24/09/2012
+
+_REG_KRNL\
+#SYSTEME\
+##SCI\
+###ANTI_DEB! CoucoU
+##TEST2\
+###TEST2! TESSTE :)
+#TEST1\
+##TEST1! Hello word !
+#TEST3! Teste dans le dossier Systeme.
+_TESTE\
+#DOSSIER\
+##TRUK1\
+###TRUK2\
+####TRUK3\
+#####TRUK4\
+######TRUK5\
+#######TRUK6\
+########TRUK! Voilà ton truque ! :P
+&FIN	

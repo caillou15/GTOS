@@ -1,0 +1,80 @@
+REM/ Cette ligne en dessous permet d'optimiser le noyau afin de chercher UNIQUEMENT l'evenement CLIC
+REM/ Car il va quand meme chercher les evenements comme SURVOLE, FOCUS etc.. Et la lecture fait "laguer" le systeme
+#EV.DISPONIBLE(CLIC, CLICD)
+rem/ Fichier d'evenements CpcdosC+ de la fenetre TESTE :)
+
+PROC/ Bouton1_F3(CLICD)
+	Fix/ NBIMG = /c %NBIMG% - 1
+	ini/ bouton(
+		ini;nom = "Bouton1_F3"
+		ini;fenetre = "FENETRE_3"
+		ini;texte = "T'a clique %NBIMG% fois"
+		ini;type = "0"
+		ini;img = "%NBIMG%"
+		ini;couleurf = "255,255,255"
+		ini;couleurp = "255,000,000"
+		ini;tx = "180"
+		ini;ty = "30"
+		ini;px = "10"
+		ini;py = "100"
+		creer/
+	ini/ bouton)
+FIN/ PROC
+
+PROC/ Bouton1_F3(CLIC)
+	Fix/ NBIMG = /c %NBIMG% + 1
+	ini/ bouton(
+		ini;nom = "Bouton1_F3"
+		ini;fenetre = "FENETRE_3"
+		ini;texte = "T'a clique %NBIMG% fois"
+		ini;type = "0"
+		ini;img = "%NBIMG%"
+		ini;couleurf = "255,255,255"
+		ini;couleurp = "255,000,000"
+		ini;tx = "180"
+		ini;ty = "30"
+		ini;px = "10"
+		ini;py = "100"
+		creer/
+	ini/ bouton)
+FIN/ PROC
+PROC/ Bouton2_F3(CLIC)
+	rem/ Plus
+	fix/ NBPM = /c %NBPM% + 1
+	ini/ label(
+		ini;fenetre = "FENETRE_3"
+	 	ini;nom = "LABEL_1"
+		ini;texte = "%NBPM%"
+	 	ini;couleurf = "200,200,200"
+	 	ini;couleurp = "000,000,000"
+	 	ini;transparent = "0"
+	 	ini;type = "2"
+		ini;tx = "200"
+		ini;ty = "20"
+		ini;px = "100"
+		ini;py = "10"
+		Creer/
+	ini/ label)
+FIN/ PROC
+PROC/ Bouton3_F3(CLIC)
+	rem/ Moins
+	fix/ NBPM = /c %NBPM% - 1
+	ini/ label(
+		ini;fenetre = "FENETRE_3"
+	 	ini;nom = "LABEL_1"
+		ini;texte = "%NBPM%"
+	 	ini;couleurf = "200,200,200"
+	 	ini;couleurp = "000,000,000"
+	 	ini;transparent = "0"
+	 	ini;type = "2"
+		ini;tx = "200"
+		ini;ty = "20"
+		ini;px = "100"
+		ini;py = "10"
+		Creer/
+	ini/ label)
+FIN/ PROC
+
+PROC/ BOUTON4_F3(CLIC)
+	exe/ os\PROG\FENETRE4.CPC
+FIN/ PROC

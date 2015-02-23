@@ -1,0 +1,6 @@
+rem/ Selecteur de programme suivant l'extension
+rem/ ARGA = chemin complet du fichier
+rem/ ARGB = extension (exemple: .CPC)
+
+explorer/ %ARGA%
+stop/

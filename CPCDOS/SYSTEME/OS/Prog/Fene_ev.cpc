@@ -1,0 +1,13 @@
+proc/ MON_TEXTEBOX(ENTRER)
+	ini/ textebox(
+		ini;fenetre = "FENETRE_2"
+		ini;nom = "MON_TEXTEBOX"
+		ini;texte = "#%COMMANDE"
+	ini/ textebox)
+	cmd/ %COMMANDE%
+FIN/ PROC
+
+
+proc/ BOK.TESTE(CLIC)
+	lc/
+FIN/ PROC

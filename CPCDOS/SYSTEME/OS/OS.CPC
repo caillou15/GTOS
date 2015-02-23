@@ -1,0 +1,63 @@
+rem/ GTOS Properties
+rem/ Fichier de configuration du systeme d'exploitation
+
+rem/ ==============================================
+rem/ ====       Variables d'environements      ====
+rem/ ==============================================
+txt/ *** Fixation des informations ***
+fix/ OS = GTOS
+fix/ Version = 3.0
+fix/ auteur = DA CRUZ Alexy
+fix/ Org = GeomTech
+fix/ Source = https://github.com/geomtech/GTOS
+fix/ Contact = dacruzalexy@gmail.com
+rem/ ==============================================
+rem/ ====         Configuration système        ====
+rem/ ==============================================
+FIX/ BAR_PROGRESSION = 70
+txt/ *** Configuration du systeme ***
+fix/ SYS_SEG = segment16
+fix/ SYS_MEMTYPE = xms
+fix/ SYS_COMC = 512
+fix/ SYS_ah = 1
+fix/ SYS_PDS = 0
+fix/ SYS_STACK = 4096
+rem/ Carte graphique :
+fix/ SCR_bas = 1024x768
+fix/ SCR_bit = 16
+
+FIX/ BAR_PROGRESSION = 80
+rem/ ==============================================
+rem/ ====  Variables système & environement    ====
+rem/ ==============================================
+txt/ *** Fixation des variables d'environement ***
+
+rem/ Fond d'ecran bureau
+fix/ SCR_FOND = 0
+fix/ SCR_FOND = OS\Media\FOND\Energie.jpg
+
+rem/ Anti-debordement des fenêtres (sur axe origine)
+fix/ ANTI_DEB_X = 1
+Fix/ ANTI_DEB_XX = 0
+Fix/ ANTI_DEB_Y = 0
+Fix/ ANTI_DEB_YY = 0
+FIX/ BAR_PROGRESSION = 90
+
+rem/ Repertoires systemes
+fix/ Prog = OS\Prog
+fix/ Media = OS\Media
+fix/ Systeme = OS\GTOS
+Rem/ Configurer les extensions (KRNL\EXT.CFG)
+SYS/ /EXT
+FIX/ BAR_PROGRESSION = 100
+FIX/ ANNIMATION = 0
+iug/
+rem/ Pas oublier de stopper la lecture du fichier pour
+rem/ indiquer la fin > Execution du mode IUG
+stop/
+
+:IUG:
+
+exe/ %SYSTEME%\INDEX.CPC
+
+stop/

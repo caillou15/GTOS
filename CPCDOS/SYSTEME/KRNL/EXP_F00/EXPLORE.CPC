@@ -1,0 +1,43 @@
+REM/ Ce fichier contient les parametre de personnalisation de l'explorateur Cpcdos
+rem/ FAVIER Sebastien 01
+rem/ 10-11-2013 [R.I.P Theo]
+
+rem/ Couleurs classes en R.V.B (Rouge Vert Bleu)
+
+REM/ Couleur de fond
+FIX/ EXP_COULEUR_F_R = 55
+FIX/ EXP_COULEUR_F_V = 55
+FIX/ EXP_COULEUR_F_B = 55
+ 
+REM/ Couleur des caracteres
+FIX/ EXP_COULEUR_C_R = 250
+FIX/ EXP_COULEUR_C_V = 250
+FIX/ EXP_COULEUR_C_B = 250
+
+REM/ Dimentions
+FIX/ EXP_DIM_X = 700
+FIX/ EXP_DIM_Y = 600
+REM/ Position dans la fenetre
+FIX/ EXP_POS_X = 10
+FIX/ EXP_POS_Y = 64
+
+REM/ Dossier par defaut
+FIX/ EXP_CIBLE_DEF = %SYS.BOOT%
+
+FIX/ TMP = FEXPLORE
+
+ini/ fenetre(
+	ini;nom = "%TMP%"
+	ini;texte = "Explorateur de fichiers"
+	ini;Type = "1;AGR1;SIZ1"
+	ini;TX = "%EXP_DIM_X%"
+	ini;TY = "%EXP_DIM_Y%"
+	ini;PX = "50"
+	ini;PY = "50"
+	ini;image = "%MEDIA%\Icones\ICO_EXP.BMP"
+	ini;couleur = "055,055,055"
+	creer/
+	EV/ KRNL\EXP_F00\CHANGE.CPC
+ini/ fenetre)
+
+

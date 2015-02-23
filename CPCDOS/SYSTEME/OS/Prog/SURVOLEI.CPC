@@ -1,0 +1,83 @@
+REM/ Programme test pour suroler les texteboxs ;-)
+
+Rem/ Creer une fenetre
+ini/ fenetre(
+        ini;nom = "FENETRE_SURVOLE_IMG"
+        ini;texte = "Survole teste!"
+	ini;img = "OS\MEDIA\ICONES\ICO_TEST.BMP"
+        ini;type = "1;AGR1,SIZ1"
+        ini;couleur = "087,215,186"
+        ini;tx = "350"
+        ini;ty = "250"
+        ini;px = "MX"
+        ini;py = "250"
+        creer/
+ini/ fenetre)
+
+rem/ Creer une imagebox ( la lune qui dort )
+ini/ imagebox(
+	ini;NOM = "IMG_BOX_ZZZ"
+	ini;fenetre = "FENETRE_SURVOLE_IMG"
+	ini;couleur = "000,000,130"
+	ini;couleurf = "001,001,001"
+	ini;type = "0"
+	ini;image = "%PROG%\SURVOLEZ.BMP"
+	ini;px = "220"
+	ini;py = "50"
+	ini;tx = "100"
+	ini;ty = "100"
+	creer/
+	EV/ %EXE_EN_COURS%
+ini/ imagebox)
+ini/ imagebox(
+	ini;NOM = "IMG_BOX_TEST"
+	ini;fenetre = "FENETRE_SURVOLE_IMG"
+	ini;couleur = "000,000,130"
+	ini;couleurf = "000,000,000"
+	ini;type = "0"
+	ini;image = "%PROG%\SURVOLE1.jpg"
+	ini;px = "10"
+	ini;py = "10"
+	ini;tx = "200"
+	ini;ty = "200"
+	creer/
+	EV/ %EXE_EN_COURS%
+ini/ imagebox)
+rem/ la variable "exe_en_cours" correspond au fichier actuel ;-)
+
+
+REM/ Si l'utilisateur survole un bouton
+PROC/ IMG_BOX_TEST(SURVOLE)
+	ini/ imagebox(
+	        ini;nom = "IMG_BOX_TEST"
+		ini;image = "%PROG%\SURVOLE2.jpg"
+		CREER/
+	INI/ imagebox)
+FIN/ PROC
+
+REM/ Si l'utilisateur enleve son curseur du bouton
+PROC/ IMG_BOX_TEST(NONSURVOLE)
+	ini/ imagebox(
+	        ini;nom = "IMG_BOX_TEST"
+		ini;image = "%PROG%\SURVOLE3.jpg"
+		CREER/
+	INI/ imagebox)
+FIN/ PROC
+
+REM/ Si l'utilisateur clique sur le bouton
+PROC/ IMG_BOX_TEST(CLIC)
+	ini/ imagebox(
+	        ini;nom = "IMG_BOX_TEST"
+		ini;image = "%PROG%\SURVOLE4.jpg"
+		CREER/
+	INI/ imagebox)
+FIN/ PROC
+
+REM/ Si l'utilisateur clique sur la lune qui dort
+PROC/ IMG_BOX_ZZZ(CLIC)
+	ini/ imagebox(
+	        ini;nom = "IMG_BOX_TEST"
+		ini;image = "%PROG%\SURVOLE1.jpg"
+		CREER/
+	INI/ imagebox)
+FIN/ PROC

@@ -1,0 +1,153 @@
+REM/ Ce service permet de tester la carte reseau, la passerelle internet puis le DNS !
+REM/ le resultat sera une valeur stockee dans RESEAU_STATUT
+REM/ Si la configuration IP change vous devrez redemarrer le service
+REM/ Par FAVIER Sebastien
+
+REM/ Sortie %RESEAU_STATUT% :
+REM/		0:Pas de carte ou pilote reseau
+REM/		1:Mauvaise configuration IP / Passerelle non disponible
+REM/		2:Reseau local uniquement
+REM/		3:Reseau local + Internet
+REM/		4:Reseau local + Internet + DNS
+REM/		-1:Identification/test
+
+SI/ %MA_VARIABLE_SVC% = 1 (:ALLER/ ACTIVER:)
+rem/ Sinon on desactive le service (l'objet le COMPTEUR)
+
+:DESACTIVER:
+
+INI/ COMPTEUR(
+	INI;NOM 	= "SVC_RESEAU"
+	INI;ACTIVE 	= "0"
+	Creer/
+INI/ COMPTEUR)
+
+TXT/ Service desactive
+
+stop/
+
+
+:ACTIVER:
+
+FIX/ MA_FENETRE = %SRV_SVC%
+
+INI/ COMPTEUR(
+	INI;NOM 	= "SVC_RESEAU"
+	INI;FENETRE 	= "%MA_FENETRE%"
+	INI;INTERVALLE 	= "6"
+	INI;ACTIVE 	= "1"
+	Creer/
+	EV/ %EXE_EN_COURS%
+INI/ COMPTEUR)
+FIX/ RESEAU_STATUT = -1
+TXT/ Lecture de la configuration IP
+exe/ & KRNL\IPCONFIG\IPCONFIG.CPC
+TXT/ Conversion de la configuration IP
+exe/ & KRNL\IPCONFIG\INIT.CPC
+TXT/ Kernel : Service en cours d'execution
+
+stop/
+
+
+PROC/ SVC_RESEAU(CYCLE)
+
+	REM/ On utilise la fonction INS (IN String) qui permet de chercher une ou plusieurs lettres
+	REM/ correspondante dans la sortie de la commande PING/ dans la variable RES 
+	REM/ Si ces lettres existent alors il renvoie la position >0 sinon c'est 0
+
+        SI/ %RESEAU_STATUT% > 0 (:ALLER/ TST_PASSERELLE:)
+	REM/ ====== TEST DE LA CARTE RESEAU ======
+	FIX/ RESEAU_STATUT = -1
+	DOEVENTS/
+	@#RES PING/ 127.0.0.1
+	FIX/ RESEAU_STATUT = 0
+	FIX/ VAR1 = /C INS>%RES%;Service indisponible
+	FIX/ VAR2 = /C INS>%RES%;aucun pilote
+	FIX/ VAR3 = /C INS>%RES%;Reponse de
+	SI/ %VAR1% > 0 (:
+		FIX/ RESEAU_STATUT = 0
+		ALLER/ FIN_CYCLE_SVC
+	FIN/ SI
+	SI/ %VAR2% > 0 (:
+		FIX/ RESEAU_STATUT = 0
+		ALLER/ FIN_CYCLE_SVC
+	FIN/ SI
+	SI/ %VAR3% > 0 (:FIX/ RESEAU_STATUT = 1:)
+        
+        REM/ ====================================
+
+	REM/ Si la carte repond a la boucle local
+	SI/ %RESEAU_STATUT% < 1 (:ALLER/ FIN_CYCLE_SVC:)
+
+:TST_PASSERELLE:
+        SI/ %RESEAU_STATUT% > 1 (:ALLER/ TST_INT:)
+	REM/ ====== TEST DE LA PASSERELLE ======
+	FIX/ RESEAU_STATUT = -1
+	DOEVENTS/
+	@#RES PING/ %PASSERELLE%
+	FIX/ RESEAU_STATUT = 1
+	FIX/ VAR1 = /C INS>%RES%;Pas de r‚ponse
+	FIX/ VAR2 = /C INS>%RES%;machine
+	FIX/ VAR3 = /C INS>%RES%;Reponse de
+	SI/ %VAR3% > 0 (:
+		FIX/ RESEAU_STATUT = 2
+		ALLER/ TST_INT
+	FIN/ SI
+	SI/ %VAR1% > 0 (:
+		FIX/ RESEAU_STATUT = 1
+	FIN/ SI
+	SI/ %VAR2% > 0 (:
+		FIX/ RESEAU_STATUT = 1
+	FIN/ SI
+	
+	REM/ ===================================
+        SI/ %RESEAU_STATUT% = 1 (:FIX/ RESEAU_STATUT = 0:)
+
+	REM/ Si la passerelle repond
+	SI/ %RESEAU_STATUT% < 2 (:ALLER/ FIN_CYCLE_SVC:)
+:TST_INT:
+        SI/ %RESEAU_STATUT% > 2 (:ALLER/ TST_DNS:)
+	REM/ ====== TEST D'INTERNET ====== (Google.fr)
+	FIX/ RESEAU_STATUT = -1
+	DOEVENTS/
+	@#RES PING/ 74.125.132.94
+	FIX/ RESEAU_STATUT = 2
+	FIX/ VAR1 = /C INS>%RES%;Pas de r‚ponse
+	FIX/ VAR2 = /C INS>%RES%;machine
+	FIX/ VAR3 = /C INS>%RES%;Reponse de
+	SI/ %VAR1% > 0 (:FIX/ RESEAU_STATUT = 2:)
+	SI/ %VAR2% > 0 (:FIX/ RESEAU_STATUT = 2:)
+	SI/ %VAR3% > 0 (:FIX/ RESEAU_STATUT = 3:)
+	REM/ =============================
+        SI/ %RESEAU_STATUT% = 2 (:FIX/ RESEAU_STATUT = 1:)
+
+	REM/ Si internet repond
+        SI/ %RESEAU_STATUT% < 3 (:ALLER/ FIN_CYCLE_SVC:)
+
+:TST_DNS:
+
+	REM/ ====== TEST D'INTERNET + DNS ====== (Google.fr)
+	FIX/ RESEAU_STATUT = -1
+	DOEVENTS/
+	@#RES PING/ www.google.fr
+	FIX/ RESEAU_STATUT = 3
+	FIX/ VAR1 = /C INS>%RES%;Pas de r‚ponse
+	FIX/ VAR2 = /C INS>%RES%;DNS
+	FIX/ VAR3 = /C INS>%RES%;Reponse de
+	SI/ %VAR1% > 0 (:FIX/ RESEAU_STATUT = 3:)
+	SI/ %VAR2% > 0 (:FIX/ RESEAU_STATUT = 3:)
+	SI/ %VAR3% > 0 (:FIX/ RESEAU_STATUT = 4:)
+	REM/ ===================================
+        SI/ %RESEAU_STATUT% = 3 (:FIX/ RESEAU_STATUT = 2:)
+
+:FIN_CYCLE_SVC:
+	REM/ Supprimer les variables
+	FIX/ /S VAR1
+	FIX/ /S VAR2
+	FIX/ /S VAR3
+FIN/ PROC
+
+stop/
+:DESCRIPTION:
+FIX/ SVC_DESCRIPTION = Service permettant de tester le reseau. Resultat stocke dans la variable RESEAU_STATUT
+@stop/

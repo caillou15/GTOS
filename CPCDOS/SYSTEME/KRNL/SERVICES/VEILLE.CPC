@@ -1,0 +1,149 @@
+REM/ Ce service permet de mettre en veille l'écran de l'ordinateur avec une action au choix à une intervalle de temps
+REM/ Il se base sur le temps que le curseur n'a pas changé de position puis sur certaines commandes.
+REM/ Par FAVIER Sebastien
+REM/ Le 28/09/2014
+
+REM/ Variables a communiquer pour cette fonction :
+REM/ SVC_VEILLE_TEMPS		[Indiquer le nombre de minutes (cycle)]
+REM/ SVC_VEILLE_EXE		[Indiquer le programme.cpc de "veille" a executer
+REM/				  Si = 0 alors la veille sera une extinction du moniteur
+REM/				  IDEM si le programme CPC n'est pas disponible]
+
+
+
+SI/ %MA_VARIABLE_SVC% = 1 (:ALLER/ ACTIVER:)
+rem/ Sinon on desactive le service (l'objet le COMPTEUR)
+
+:DESACTIVER:
+REM/ Supprimer des variables
+FIX/ /S SVC_VEILLE_CURPOSX
+FIX/ /S SVC_VEILLE_CURPOSY
+FIX/ /S SVC_VEILLE_ETAT
+FIX/ /S SVC_VEILLE_CYCLE
+FIX/ /S VALEUR_X
+FIX/ /S VALEUR_Y
+
+
+INI/ COMPTEUR(
+	INI;NOM 	= "SVC_VEILLE"
+	INI;ACTIVE 	= "0"
+	Creer/
+INI/ COMPTEUR)
+
+TXT/ Service desactive
+
+stop/
+
+
+:ACTIVER:
+
+@#TEST FIX/ /TEST SVC_VEILLE_TEMPS
+SI/ %TEST% = 0 (:
+	TXT/ Erreur : Veuillez indiquer le temps en minutes dans SVC_VEILLE_TEMPS.
+	SI/ %IUG% = 1 (:MSGBOX/ /TEXTE=Veuillez indiquer le temps en minutes dans SVC_VEILLE_TEMPS. /TITRE=Oups! - Service VEILLE /mode=1 /alerte=2:)
+	stop/
+FIN/ SI
+@#TEST FIX/ /TEST SVC_VEILLE_EXE
+SI/ %TEST% = 0 (:
+	TXT/ Erreur : Veuillez indiquer le programme a executer dans SVC_VEILLE_EXE. si 0 alors extinction moniteur.
+	SI/ %IUG% = 1 (:MSGBOX/ /TEXTE=Veuillez indiquer le programme a executer dans SVC_VEILLE_EXE. si 0 alors extinction moniteur. /TITRE=Oups! - Service VEILLE /mode=1 /alerte=2:)
+	stop/
+FIN/ SI
+
+
+Rem/ On installe le service sur le Serveur d'hebergement de services locaux
+FIX/ NOM_PROCESSUS = %SRV_SVC%
+FIX/ SVC_VEILLE_CURPOSX = 0
+FIX/ SVC_VEILLE_CURPOSY = 0
+FIX/ SVC_VEILLE_ETAT = 0
+FIX/ SVC_VEILLE_CYCLE = 1
+
+INI/ COMPTEUR(
+	INI;NOM 	= "SVC_VEILLE"
+	INI;FENETRE 	= "%NOM_PROCESSUS%"
+	INI;INTERVALLE 	= "10"
+	INI;ACTIVE 	= "1"
+	Creer/
+	EV/ %EXE_EN_COURS%
+INI/ COMPTEUR)
+
+TXT/ Kernel : Service en cours d'execution
+
+stop/
+
+
+PROC/ SVC_VEILLE(CYCLE)
+	REM/ Le cycle execute toutes les 10secondes inscrit dans une variable
+	REM/ le nombre de "10 secondes" passes, si il depasse un seuille alors il execute
+	REM/ Le mode de veille choisis
+
+@#VALEUR_X PosX/ /IUG
+@#VALEUR_Y posY/ /IUG
+
+	REM/ Verifier si le curseur en X puis Y a change de position
+	REM/ Si le curseur n'est pas egale a l'ancienne position alors on reinitialise le cycle a 0
+	REM/ Et on re-capture la nouvelle position X et Y
+	SI/ %SVC_VEILLE_CURPOSX% N %VALEUR_X% (:
+		FIX/ SVC_VEILLE_CYCLE = 1
+		FIX/ SVC_VEILLE_CURPOSX = %VALEUR_X%
+		SI/ %SVC_VEILLE_ETAT% = 1 (:ALLER/ RE_INI_VEILLE:)
+		STOP/
+	FIN/ SI
+	SI/ %SVC_VEILLE_CURPOSY% N %VALEUR_Y% (:
+		FIX/ SVC_VEILLE_CYCLE = 1
+		FIX/ SVC_VEILLE_CURPOSY = %VALEUR_Y%
+		SI/ %SVC_VEILLE_ETAT% = 1 (:ALLER/ RE_INI_VEILLE:)
+		STOP/
+	FIN/ SI
+	REM/ Si la veille est en cours on s'arrete la.
+	SI/ %SVC_VEILLE_ETAT% = 1 (:
+		STOP/
+	FIN/ SI
+
+	REM/ Si le curseur est toujours a la meme position alors on ajoute +1 au cycle
+	FIX/ SVC_VEILLE_CYCLE = /C %SVC_VEILLE_CYCLE% + 1
+
+	FIX/ CALCUL = /C %SVC_VEILLE_TEMPS% * 6
+	rem/ Si on atteint le seuil du nombre de minutes, alors on execute la mise en veille
+	SI/ %SVC_VEILLE_CYCLE% > %CALCUL% (:
+
+		REM/ On verifie si une veille a ete selectionnee
+		SI/ %SVC_VEILLE_EXE% = 0 (:ALLER/ ECRANOFF:)
+		REM/ Si oui on verifie si le programme "veille" est disponible
+		FIX/ TEST = /C FEX>%SVC_VEILLE_EXE%
+		SI/ %TEST% > 0 (:ALLER/ EXE_PROG:)
+:ECRANOFF:
+		FIX/ SVC_VEILLE_ETAT = 1
+		REM/ Toutes les 1secondes il va verifier la position du curseur
+		INI/ COMPTEUR(
+			INI;NOM 	= "SVC_VEILLE"
+			INI;INTERVALLE 	= "1"
+			Creer/
+		INI/ COMPTEUR)
+		REM/ On eteint l'affichage
+		TXT/ /DEBUG Kernel : Mise en veille du moniteur
+		SYS/ /VGAOFF
+		TXT/ /DEBUG Kernel : Moniteur OFF
+		STOP/
+:EXE_PROG:
+		msgbox/ On execute %SVC_VEILLE_EXE% !!
+		stop/
+	FIN/ SI
+	stop/
+:RE_INI_VEILLE:
+	REM/ On remet le compteur a 1minute
+	TXT/ /DEBUG Kernel : Sortie de veille du moniteur
+	SYS/ /VGAON
+	TXT/ /DEBUG Kernel : Moniteur ON
+	INI/ COMPTEUR(
+		INI;NOM 	= "SVC_VEILLE"
+		INI;INTERVALLE 	= "10"
+		Creer/
+	INI/ COMPTEUR)
+	FIX/ SVC_VEILLE_ETAT = 0
+FIN/ PROC
+
+stop/
+:DESCRIPTION:
+@FIX/ SVC_DESCRIPTION = Service permettant de mettre en veille, l'affichage votre ordinateur.
+@stop/

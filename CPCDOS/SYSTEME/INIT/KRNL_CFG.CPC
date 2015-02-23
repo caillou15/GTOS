@@ -1,0 +1,24 @@
+rem/ Microsf01 Cpcdos OS2
+rem/ config
+
+:_CFG:
+fix/ tmp = "512"
+fix/ ah = 1
+fix/ PDS = 0
+fix/ PILOTES = ..\PILOTES\DOS
+fix/ scr_bit = 0
+fix/ scr_bas = 0
+FIX/ MULTI_TACHE = 10
+Fix/ IUG_REDUCTION_INDEX = 0
+FIX/ LC_IUG_SOURCE = 0
+Fix/ DERNIERE_APP = #NUL
+FIX/ BARRE_TACHES = & KRNL\RED_F01\AJOUT.CPC
+rem/ Variable pour le retour de ligne
+FIX/ CRLF = /c chr >11
+FIX/ CP_STATUS = 0
+
+fix/ PILOTES = ..\pilotes\dos
+
+:_CLOCK:
+txt/ *** Definition Priorite systeme 100/100 ***
+fix/ CLK = 100

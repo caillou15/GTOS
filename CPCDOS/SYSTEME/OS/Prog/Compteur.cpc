@@ -1,0 +1,77 @@
+Rem/ compteur en ms multi-instance
+rem/ Favier Sebastien le 27/09/2014
+
+FIX/ VAL = /C %RND% * 100
+FIX/ VAL = /C INT>%VAL%
+
+@#TEST FIX/ /TEST NOMBRE_FTIMER
+SI/ %TEST% = 0 (:FIX/ NOMBRE_FTIMER = 0:)
+
+FIX/ NOMBRE_FTIMER = /C %NOMBRE_FTIMER% + 1
+
+FIX/ FENETRE_TIMER = FTIMER_%VAL%
+
+FIX/ TEMPS(%NOMBRE_FTIMER%) = 0.800
+FIX/ ATEMPS(%NOMBRE_FTIMER%) = 0.800
+FIX/ CYCLE(%NOMBRE_FTIMER%) = 0
+
+FIX/ FTIMER_TABLEAU(%NOMBRE_FTIMER%) = %FENETRE_TIMER%
+
+ini/ fenetre(
+	ini;nom = "%FENETRE_TIMER%"
+	ini;type = "1"
+	ini;texte = "Teste de comptage en %TEMPS(NOMBRE_FTIMER)%ms"
+	ini;couleur = "010,250,100"
+	ini;px = "MX"
+	ini;py = "MY"
+	ini;tx = "300"
+	ini;ty = "70"
+	creer/
+ini/ fenetre)
+
+ini/ label(
+	ini;fenetre	= "%FENETRE_TIMER%"
+	ini;nom		= "LBL_TEMPS_%FENETRE_TIMER%"
+	ini;texte 	= "Nombre :0"
+	ini;couleurf	= "200,200,200"
+	ini;couleurp	= "000,000,000"
+	ini;px 		= "10"
+	ini;py 		= "10"
+	ini;type = "3"
+	creer/
+ini/ label)
+
+ini/ compteur(
+	ini;nom = "COMPT_%FENETRE_TIMER%"
+	ini;fenetre = "%FENETRE_TIMER%"
+	ini;intervalle = "%TEMPS(NOMBRE_FTIMER)%"
+	ini;active = "1"
+	creer/
+	ev/ OS\PROG\COMPT_EV.cpc
+ini/ compteur)
+
+ini/ label(
+	ini;fenetre	= "%FENETRE_TIMER%"
+	ini;nom		= "LBL_PLUS_%FENETRE_TIMER%"
+	ini;texte 	= "+"
+	ini;couleurf	= "000,200,000"
+	ini;couleurp	= "000,000,000"
+	ini;px 		= "30"
+	ini;py 		= "30"
+	ini;type = "3"
+	creer/
+	ev/ OS\PROG\COMPT_EV.cpc
+ini/ label)
+
+ini/ label(
+	ini;fenetre	= "%FENETRE_TIMER%"
+	ini;nom		= "LBL_MOINS_%FENETRE_TIMER%"
+	ini;texte 	= "-"
+	ini;couleurf	= "000,200,000"
+	ini;couleurp	= "000,000,000"
+	ini;px 		= "50"
+	ini;py 		= "30"
+	ini;type = "3"
+	creer/
+	ev/ OS\PROG\COMPT_EV.cpc
+ini/ label)

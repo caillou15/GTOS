@@ -1,0 +1,70 @@
+Rem/ Il s'agit du bouton precedent de l'explorateur Cpcdos
+rem/ Microsf01 Favier Sebastien 01
+
+rem/ Cree le 19/12/2014
+
+rem/ Variable a communiquer :
+rem/   EXP_FENETRE 	(Fenetre)
+
+
+ini/ imagebox(
+        ini;nom = "EXP_IMG_CREERDOSSIER"
+	ini;fenetre = "%EXP_FENETRE%"
+ 	ini;couleur = "255,255,255"
+        ini;couleurf = "001,001,001"
+	ini;type = "0"
+	ini;image = "%MEDIA%\icones\MDOSSRNV.bmp"
+	ini;px = "20"
+	ini;py = "25"
+        ini;tx = "18"
+	ini;ty = "18"
+	creer/
+	ev/ KRNL\EXP_F00\OUTIL_EV.CPC
+ini/ imagebox)
+
+ini/ imagebox(
+        ini;nom = "EXP_IMG_CREERDOSSIER"
+	ini;fenetre = "%EXP_FENETRE%"
+ 	ini;couleur = "255,255,255"
+        ini;couleurf = "001,001,001"
+	ini;type = "0"
+	ini;image = "%MEDIA%\icones\MDOSSRNV.bmp"
+	ini;px = "20"
+	ini;py = "25"
+        ini;tx = "22"
+	ini;ty = "22"
+	creer/
+	ev/ %REP_EN_COURS%\CrRepert.CPC
+ini/ imagebox)
+
+ini/ imagebox(
+	ini;NOM = "EXP_IMG_CREERFICHIER"
+	ini;FENETRE = "%EXP_FENETRE%"
+ 	ini;couleur = "255,255,255"
+ 	ini;type = "0"
+ 	ini;couleurf = "001,001,001"
+ 	ini;image = "%MEDIA%\Icones\MFICHRNV.bmp"
+        ini;px = "50"
+	ini;py = "25"
+ 	ini;tx = "22"
+ 	ini;ty = "22"
+ 	creer/
+	rem/ Les evenements dans le fichier suivant:
+	ev/ %REP_EN_COURS%\CrFichr.CPC
+ini/ imagebox)
+
+ini/ imagebox(
+	ini;NOM = "EXP_IMG_RENOMMER"
+	ini;FENETRE = "%EXP_FENETRE%"
+ 	ini;couleur = "255,255,255"
+ 	ini;type = "0"
+ 	ini;couleurf = "001,001,001"
+ 	ini;image = "%MEDIA%\Icones\RENOMMER.bmp"
+        ini;px = "80"
+	ini;py = "25"
+ 	ini;tx = "22"
+ 	ini;ty = "22"
+ 	creer/
+	rem/ Les evenements dans le fichier suivant:
+	ev/ %REP_EN_COURS%\Renommer.CPC
+ini/ imagebox)

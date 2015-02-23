@@ -1,0 +1,62 @@
+REM/ Programme test pour suroler les labels ;-)
+
+Rem/ Creer une fenetre
+ini/ fenetre(
+        ini;nom = "FENETRE_SURVOLE"
+        ini;texte = "Survole teste!"
+	ini;img = "OS\MEDIA\ICONES\ICO_TEST.BMP"
+        ini;type = "1;AGR1,SIZ1"
+        ini;couleur = "087,215,186"
+        ini;tx = "300"
+        ini;ty = "250"
+        ini;px = "MX"
+        ini;py = "250"
+        creer/
+ini/ fenetre)
+
+rem/ Creer un label
+ini/ label(
+	ini;fenetre = "FENETRE_SURVOLE"
+	ini;nom = "LABEL1_TEST"
+	ini;texte = "Survole moi!"
+ 	ini;couleurf = "250,250,250"
+ 	ini;couleurp = "255,000,000"
+ 	ini;transparent = "0"
+ 	ini;type = "2"
+	ini;tx = "200"
+	ini;ty = "20"
+	ini;px = "20"
+	ini;py = "50"
+	Creer/
+	EV/ %EXE_EN_COURS%
+ini/ label)
+rem/ la variable "exe_en_cours" correspond au fichier actuel ;-)
+
+
+REM/ Si l'utilisateur survole un bouton
+PROC/ LABEL1_TEST(SURVOLE)
+	ini/ label(
+	        ini;nom = "LABEL1_TEST"
+		ini;texte = "Clique moi!"
+		CREER/
+	INI/ label)
+FIN/ PROC
+
+REM/ Si l'utilisateur enleve son curseur du bouton
+PROC/ LABEL1_TEST(NONSURVOLE)
+	ini/ label(
+	        ini;nom = "LABEL1_TEST"
+		ini;texte = "Reviens!"
+		CREER/
+	INI/ label)
+FIN/ PROC
+
+REM/ Si l'utilisateur clique sur le bouton
+PROC/ LABEL1_TEST(CLIC)
+	ini/ label(
+	        ini;nom = "LABEL1_TEST"
+		ini;texte = "Survole moi!"
+		CREER/
+	INI/ label)
+	Msgbox/ Tu m'as clique dessu !
+FIN/ PROC

@@ -1,0 +1,15 @@
+// Ce programme Java permet simplement d'afficher Hello world
+// On place les chaines "Hello" dans Ma_Variable
+// Puis on l'affiche via println en ajoutant à la suite " world"
+
+import java.io.PrintStream;
+
+class Hello
+{
+        public static void main(String args[])
+        {
+                String MaVariable = "Hello";	
+                System.out.println(MaVariable + " world!");
+                System.out.println(" ");
+        }
+}

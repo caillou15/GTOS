@@ -1,0 +1,32 @@
+Rem/ Afficher une image en réduisant sa taille
+
+
+Fix/ SOURCE = OS\MEDIA\FOND\AAH.JPG
+rem/ La nouvelle taille
+Fix/ taille_x = 256
+fix/ taille_y = 192
+
+ini/ fenetre(
+        ini;nom = "SIZE"
+        ini;texte = "Apercu des images - %Visualis_img%"
+        ini;type = "1"
+        ini;px = "100"
+        ini;py = "100"
+        ini;tx = "%TAILLE_X%"
+        ini;ty = "%TAILLE_Y%"
+        creer/
+ini/ fenetre)
+
+rem/ Il faut que le type sois mis sur 3
+rem/ puis indiquer dans tx et ty la nouvelle taille
+ini/ imagebox(
+        ini;nom = "IMG_SIZE"
+        ini;fenetre = "SIZE"
+        ini;type = "3"
+        ini;px = "0"
+        ini;py = "0"
+        ini;tx = "%TAILLE_X%"
+        ini;ty = "%TAILLE_Y%"
+        ini;image = "%SOURCE%"
+        creer/
+ini/ imagebox)

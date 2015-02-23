@@ -1,0 +1,82 @@
+Rem/ Ce programme permet d'afficher une image transparent avec un fond de couleur en 1 objet!
+
+ini/ fenetre(
+	ini;nom = "FENETRE_GIF"
+	ini;texte = "Cpcdos - Teste d'affichage .GIF (ALT+F4 pour fermer)"
+	ini;type = "2;C2,B0,O0"
+	ini;couleur = "087,215,186"
+	ini;px = "MX"
+	ini;py = "MY"
+	ini;tx = "600"
+	ini;ty = "400"
+	Creer/
+ini/ fenetre)
+
+
+ini/ imagebox(
+	ini;NOM = "IMG_GIF"
+	ini;fenetre = = "FENETRE_GIF"
+	ini;couleur = "150,230,130"
+	ini;couleurf = "001,001,001"
+	ini;type = "0"
+	ini;image = "%PROG%\FireFox.GIF"
+	ini;px = "0"
+	ini;py = "0"
+	ini;tx = "600"
+	ini;ty = "400"
+	creer/
+ini/ imagebox)
+
+ini/ imagebox(
+	ini;NOM = "IMG_TJ1"
+	ini;fenetre = = "FENETRE_GIF"
+	ini;couleur = "150,230,130"
+	ini;couleurf = "001,001,001"
+	ini;type = "0"
+	ini;image = "%PROG%\TomJerry.GIF"
+	ini;px = "50"
+	ini;py = "50"
+	ini;tx = "140"
+	ini;ty = "304"
+	creer/
+ini/ imagebox)
+
+ini/ imagebox(
+	ini;NOM = "IMG_TJ2"
+	ini;fenetre = = "FENETRE_GIF"
+	ini;couleur = "150,230,130"
+	ini;couleurf = "001,001,001"
+	ini;type = "0"
+	ini;image = "%PROG%\TomJerry.GIF"
+	ini;px = "240"
+	ini;py = "320"
+	ini;tx = "140"
+	ini;ty = "104"
+	creer/
+ini/ imagebox)
+
+ini/ fenetre(
+	ini;nom = "FENETRE_GIF2"
+	ini;texte = "Cpcdos - Teste d'affichage .GIF (ALT+F4 pour fermer)"
+	ini;type = "3;C2,B0,O0"
+	ini;couleur = "087,215,186"
+	ini;px = "MX"
+	ini;py = "MY"
+	ini;tx = "140"
+	ini;ty = "104"
+	Creer/
+ini/ fenetre)
+
+ini/ imagebox(
+	ini;NOM = "IMG_TJ3"
+	ini;fenetre = = "FENETRE_GIF2"
+	ini;couleur = "150,230,130"
+	ini;couleurf = "001,001,001"
+	ini;type = "0"
+	ini;image = "%PROG%\TomJerry.GIF"
+	ini;px = "0"
+	ini;py = "0"
+	ini;tx = "140"
+	ini;ty = "104"
+	creer/
+ini/ imagebox)

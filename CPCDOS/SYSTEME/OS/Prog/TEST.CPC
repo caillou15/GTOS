@@ -1,0 +1,15 @@
+fix/ debug = 0
+FIX/ VALEUR_SECRET = 5
+:DEBUT:
+TXT/ Entrez un nombre
+TOUCHE/ /P VALEUR_ENTREE
+cls/
+SI/ %VALEUR_SECRET% = %VALEUR_ENTREE% (:ALLER/ GAGNE:)
+SI/ %VALEUR_SECRET% > %VALEUR_ENTREE% (:TXT/ Non, plus grand:)
+SI/ %VALEUR_SECRET% < %VALEUR_ENTREE% (:TXT/ Non plus petit:)
+ALLER/ DEBUT
+:GAGNE:
+TXT/ Bravo ! Recommencer ? (1=OUI 2=NON)
+TOUCHE/ /P QUESTION
+SI/ %QUESTION% N 1 (:stop/:)
+ALLER/ DEBUT

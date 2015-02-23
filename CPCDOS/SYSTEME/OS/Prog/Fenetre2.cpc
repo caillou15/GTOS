@@ -1,0 +1,29 @@
+rem/ cet ordinateur est merdique LOL !
+rem/ Bref
+
+
+ini/ fenetre(
+        ini;nom = "FENETRE_2"
+        ini;texte = "Ma petite fenetre !"
+        ini;type = "1;C1"
+        ini;couleur = "087,215,186"
+        ini;tx = "300"
+        ini;ty = "250"
+        ini;px = "MX"
+        ini;py = "250"
+        creer/
+ini/ fenetre)
+
+ini/ imagebox(
+	ini;nom = "IMG_1"
+	ini;fenetre = "FENETRE_2"
+	ini;couleur = "000,000,000"
+	ini;couleurf = "001,001,001"
+	ini;type = "1"
+	ini;image = "os\prog\tomjerry.bmp"
+	ini;px = "10"
+	ini;py = "1"
+	ini;tx = "140"
+	ini;ty = "104"
+	creer/
+ini/ imagebox)

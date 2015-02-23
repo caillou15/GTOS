@@ -1,0 +1,39 @@
+Si/ %debug% = 1 (:fix/ debugTMP = 1:)
+fix/ debug = 0
+
+fix/ index = 0
+
+txt/ Creation des tableau jusqu'a 10
+:debut:
+
+rem/ Si %index% est plus grand que 10 alors aller au label suite1
+si/ %index% > 10 (:aller/ suite1:)
+
+rem/ incrementer index
+fix/ index = /c %index% + 1
+
+rem/ creer les tableau ayant pour valeur index*2
+fix/ TABLEAU(%index%) = /c %index% * 2
+
+rem/ Retourner au label debut
+aller/ debut
+
+:suite1:
+si/ %index% > 10 (:fix/ index = 0:)
+
+:suite2:
+
+rem/ incrementer index
+fix/ index = /c %index% + 1
+si/ %index% > 10 (:aller/ fin:)
+
+rem/ afficher les tableaux
+fix/ TMP = %tableau(index)%
+txt/ Tableau numero %index% = %TMP%
+
+rem/ Retourner au label suite2
+aller/ suite2
+:fin:
+Si/ %debugTMP% = 1 (:fix/ debug = 1:)
+stop/
+

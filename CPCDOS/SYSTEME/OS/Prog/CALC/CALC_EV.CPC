@@ -1,0 +1,189 @@
+rem/ Fichier d'evenements de la calculatrice CraftyOS
+rem/ FAVIER Sebastien 01
+rem/ 09/06/2013
+
+PROC/ PROG_CALC(FERMER)
+	REM/ Enlever dans la barre des taches
+	FIX/ IUG_REDUCTION_LABEL = SUITE123
+	FIX/ IUG_REDUCTION_ACTION = 2
+	exe/ KRNL\RED_F01\AJOUT.CPC
+	:SUITE123:
+	stop/
+FIN/ PROC
+
+proc/ CALC_NB0(CLIC)
+	:DEBUT:
+	txt/ blalb
+	ALLER/ DEBUT
+
+
+	rem/ fix/ INDEX_NB = /c %INDEX_NB% + 1
+	fix/ CALC_NB(2) = %CALC_NB(2)%0
+	aller/ TEXTE
+FIN/ PROC
+
+proc/ CALC_NBP(CLIC)
+	fix/ CALC_NB(2) = %CALC_NB(2)%.
+	aller/ TEXTE
+FIN/ PROC
+
+proc/ CALC_NB1(CLIC)
+	fix/ CALC_NB(2) = %CALC_NB(2)%1
+	aller/ TEXTE
+FIN/ PROC
+
+proc/ CALC_NB2(CLIC)
+	fix/ CALC_NB(2) = %CALC_NB(2)%2
+	aller/ TEXTE
+FIN/ PROC
+
+proc/ CALC_NB3(CLIC)
+	fix/ CALC_NB(2) = %CALC_NB(2)%3
+	aller/ TEXTE
+FIN/ PROC
+
+proc/ CALC_NB4(CLIC)
+	fix/ CALC_NB(2) = %CALC_NB(2)%4
+	aller/ TEXTE
+FIN/ PROC
+
+proc/ CALC_NB5(CLIC)
+	fix/ CALC_NB(2) = %CALC_NB(2)%5
+	aller/ TEXTE
+FIN/ PROC
+
+proc/ CALC_NB6(CLIC)
+	fix/ CALC_NB(2) = %CALC_NB(2)%6
+	aller/ TEXTE
+FIN/ PROC
+
+proc/ CALC_NB7(CLIC)
+	fix/ CALC_NB(2) = %CALC_NB(2)%7
+	aller/ TEXTE
+FIN/ PROC
+
+proc/ CALC_NB8(CLIC)
+	fix/ CALC_NB(2) = %CALC_NB(2)%8
+	aller/ TEXTE
+FIN/ PROC
+
+proc/ CALC_NB9(CLIC)
+	fix/ CALC_NB(2) = %CALC_NB(2)%9
+	aller/ TEXTE
+FIN/ PROC
+
+proc/ CALC_SQR(CLIC)
+	fix/ CALC_NB(2) = /c SQR >%CALC_NB(2)%
+	aller/ TEXTE
+FIN/ PROC
+
+proc/ CALC_COS(CLIC)
+	fix/ CALC_NB(2) = /c COS >%CALC_NB(2)%
+	aller/ TEXTE
+FIN/ PROC
+
+proc/ CALC_SIN(CLIC)
+	fix/ CALC_NB(2) = /c SIN >%CALC_NB(2)%
+	aller/ TEXTE
+FIN/ PROC
+
+proc/ CALC_TAN(CLIC)
+	fix/ CALC_NB(2) = /c TAN >%CALC_NB(2)%
+	aller/ TEXTE
+FIN/ PROC
+
+proc/ CALC_ATN(CLIC)
+	fix/ CALC_NB(2) = /c ATN >%CALC_NB(2)%
+	aller/ TEXTE
+FIN/ PROC
+
+proc/ CALC_LOG(CLIC)
+	fix/ CALC_NB(2) = /c LOG >%CALC_NB(2)%
+	aller/ TEXTE
+FIN/ PROC
+
+proc/ CALC_HEX(CLIC)
+	fix/ CALC_NB(2) = /c HEX >%CALC_NB(2)%
+	aller/ TEXTE
+FIN/ PROC
+
+proc/ CALC_CHR(CLIC)
+	fix/ CALC_NB(2) = /c CHR >%CALC_NB(2)%
+	aller/ TEXTE
+FIN/ PROC
+
+proc/ CALC_SQR(CLIC)
+	fix/ CALC_NB(2) = /c SQR >%CALC_NB(2)%
+	aller/ TEXTE
+FIN/ PROC
+
+proc/ CALC_PLUS(CLIC)
+	fix/ SIGNE = +
+	si/ %CALC_NB(2)% > 0 (:aller/ CALCULERSIGNE:)
+FIN/ PROC
+
+proc/ CALC_MOINS(CLIC)
+	fix/ SIGNE = -
+	si/ %CALC_NB(2)% > 0 (:aller/ CALCULERSIGNE:)
+FIN/ PROC
+
+proc/ CALC_DIVIS(CLIC)
+	fix/ SIGNE = /
+	si/ %CALC_NB(2)% > 0 (:aller/ CALCULERSIGNE:)
+FIN/ PROC
+
+proc/ CALC_MULTI(CLIC)
+	fix/ SIGNE = *
+	si/ %CALC_NB(2)% > 0 (:aller/ CALCULERSIGNE:)
+FIN/ PROC
+
+proc/ CALC_EG(CLIC)
+	rem/ Calculer le resultat final
+
+	fix/ CALCNB = %CALC_NB(2)%
+	fix/ CAlC_NB(1) = /c %CAlC_NB(1)% %SIGNE% %CALCNB%
+
+	rem/ Mettre le resultat dans TXT afin de l'afficher dans le LABEL
+	fix/ TXT = %CAlC_NB(1)%
+	aller/ dessiner
+FIN/ PROC
+
+proc/ CALC_CL(CLIC)
+	rem/ Nettoyer les varaibles et les tableau d'entre
+	fix/ CALC_NB(1) = 0
+	fix/ CALC_NB(2) = 0
+	fix/ TXT = 0
+	aller/ dessiner
+FIN/ PROC
+
+:TEXTE:
+si/ %CALC_NB(1)% = 0 (:fix/ TXT = %CALC_NB(2)%:)
+si/ %CALC_NB(1)% = 0 (:aller/ dessiner:)
+fix/ TXT = %CALC_NB(1)% %SIGNE% %CALC_NB(2)%
+:dessiner:
+rem/ Afficher le resultat de %TXT% dans le LABEL CALC_TXT
+ini/ label(
+	ini;fenetre = "PROG_CALC"
+	ini;nom = "CALC_TXT"
+	ini;texte = "%TXT%"
+	creer/
+ini/ label)
+aller/ fin
+
+
+:CALCULERSIGNE:
+
+si/ %CALC_NB(1)% = 0 (:fix/ RESULTATT = %CALC_NB(2)%:)
+si/ %CALC_NB(1)% = 0 (:aller/ NETTOYER:)
+
+fix/ CALCNB = %CALC_NB(2)%
+
+rem/ Calculer
+fix/ RESULTATT = /c %CALC_NB(1)% %SIGNE% %CALCNB%
+
+:NETTOYER:
+
+fix/ CALC_NB(2) = 0
+fix/ CALC_NB(1) = %RESULTATT%
+
+:fin:

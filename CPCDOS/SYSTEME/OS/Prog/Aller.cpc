@@ -1,0 +1,14 @@
+rem/ tester la commande aller
+:label1:
+txt/ Mon texte 1
+aller/ label2
+:label3:
+txt/ Mon texte 3
+aller/ fin
+:label2:
+txt/ Mon texte 2
+explorer/
+pause/ /fermer:FEXPLORE
+msgbox/ okay!
+aller/ label3
+:fin:

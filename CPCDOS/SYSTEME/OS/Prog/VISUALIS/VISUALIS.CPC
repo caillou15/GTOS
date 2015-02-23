@@ -1,0 +1,56 @@
+rem/ Programme de visualisation de fichiers BMP
+rem/ Microsf01 Favier Sebastien 01
+rem/ Creer le 08/05/2013
+
+Rem/ Variable a communiquer :
+rem/   VISUALIS_IMG
+
+rem/ ===========================================
+
+FIX/ TAILLE_X = /C DIMX >%VISUALIS_IMG%
+FIX/ TAILLE_Y = /C DIMY >%VISUALIS_IMG%
+
+
+rem/ Fix/ Taille_x = 256
+rem/ fix/ taille_y = 192
+
+FIX/ TAILLE_Y = /c %TAILLE_Y% + %BARRETY%
+
+
+FIX/ NomFenetre = VISUALIS_IMG_%Visualis_img%
+
+Rem/ Si la fenetre de meme image existe deja alors simplement la selectionner
+@#Test FOCUS/ /TEST %NomFenetre%
+FIX/ TEST1 = /C INS>%Test%;N'existe
+SI/ %Test1% > 0 (:Aller/ Creerfenetre:)
+FIX/ TEST1 = /C INS>%Test%;non
+SI/ %Test1% > 0 (:
+	FOCUS/ %NomFenetre%
+	stop/
+FIN/ SI
+
+
+:CreerFenetre:
+
+ini/ fenetre(
+        ini;nom = "%NomFenetre%"
+        ini;texte = "Apercu des images - %Visualis_img%"
+        ini;type = "1"
+        ini;px = "100"
+        ini;py = "100"
+        ini;tx = "%TAILLE_X%"
+        ini;ty = "%TAILLE_Y%"
+        creer/
+ini/ fenetre)
+
+ini/ imagebox(
+        ini;nom = "IMG_VISUALIS_%Visualis_IMG%"
+        ini;fenetre = "%NomFenetre%"
+        ini;type = "2"
+        ini;px = "0"
+        ini;py = "0"
+        ini;tx = "%TAILLE_X%"
+        ini;ty = "%TAILLE_Y%"
+        ini;image = "%VISUALIS_IMG%"
+        creer/
+ini/ imagebox)
