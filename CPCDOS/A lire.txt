@@ -1,0 +1,6 @@
+Notez que sur DosBox si au bout d'un moment vous avez d'etranges bug, cherchez pas, redemarer!
+
+DosBox est uniquement un support de développement et non final pour l'utiliser normalement
+pour cause de ça lenteur de l'émulation.
+
+Les fichiers .dll sont des émulés pour les exécutables WIN32 afin qu'elle puisse être exécutées
